@@ -19,7 +19,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   height: 100%;
 }
 
@@ -39,7 +38,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 65px;
+  height: 60px;
   background: var(--color-white);
   display: flex;
   align-items: center;
@@ -53,7 +52,7 @@ body {
 
 .navbar__logo {
   height: 60px;
-  width: 100px;
+  width: 90px;
   object-fit: contain;
 }
 
@@ -187,20 +186,13 @@ body {
 
 .hero__circle {
   position: absolute;
-  right: -40px;
-  top: -80px;
-  width: 551px;
-  height: 551px;
+  right: -60px;
+  bottom: -110px;
+  width: 550px;
+  height: 550px;
   border-radius: 50%;
-  overflow: hidden;
+  background: #F2DADA;
   z-index: 1;
-  opacity: 0.35;
-}
-
-.hero__circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* ============================
@@ -309,6 +301,32 @@ body {
   color: var(--color-black);
   letter-spacing: 1px;
   line-height: 1.75;
+}
+
+.activities_button {
+  width: 30%;
+  margin-top: 32px;
+  display: inline-block;
+  background: var(--color-primary-btn);
+  color: var(--color-white);
+  font-family: var(--font-inter);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: var(--letter-spacing);
+  border-radius: 15px;
+  padding: 12px 22px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.65s forwards;
+}
+
+.activities_button:hover {
+  background: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(80, 132, 195, 0.35);
 }
 
 .activities__mascot-small {
@@ -535,23 +553,84 @@ body {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 70px;
+    top: 60px;
     right: 0;
+    width: 100%;
     background: #fff;
     padding: 24px 40px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     gap: 20px;
+    text-align: center;
   }
   .navbar__links.open { display: flex; }
   .navbar { padding: 0 24px; }
-  .hero__content { padding: 80px 24px 60px; }
-  .hero__mascot { display: none; }
-  .activities__inner { flex-direction: column; padding: 0 24px; }
-  .activities__card { margin-left: 0; border-radius: 20px; margin-top: -20px; }
-  .activities__img-wrap { width: 100%; height: 280px; }
-  .records { padding: 40px 24px; }
-  .records__card { flex-direction: column; }
-  .stat__divider { width: 80px; height: 2px; }
-  .footer { flex-direction: column; padding: 40px 24px; }
-  .footer__nav { flex-wrap: wrap; margin-left: 0; gap: 32px; }
+  
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+    padding-top: 80px;
+    padding-bottom: 0;
+  }
+  .hero__content { 
+    padding: 20px 24px 0;
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .hero__tagline { font-size: 20px; }
+  .hero__description { font-size: 16px; margin: 0 auto 32px; }
+  .hero__divider { width: 80%; margin: 0 auto 20px; }
+  
+  .hero__circle {
+    bottom: -50px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 320px; 
+    height: 320px;
+  }
+  .hero__mascot { 
+    display: block; 
+    position: relative; 
+    right: auto; 
+    bottom: 0; 
+    height: 350px; 
+    width: auto; 
+    margin: 40px auto 0; 
+    z-index: 2;
+    object-position: top;
+  }
+  
+  .activities { padding: 60px 24px; }
+  .activities__inner { flex-direction: column; padding: 0; }
+  .activities__card { 
+    margin-left: 0; 
+    border-radius: 20px; 
+    margin-top: -30px; 
+    padding: 40px 24px 60px; 
+    text-align: center; 
+  }
+  .activities__img-wrap { width: 100%; height: 320px; border-radius: 20px; }
+  .activities__card-title { font-size: 24px; }
+  .activities__card-divider { margin: 0 auto 24px; }
+  .activities__card-text { font-size: 16px; text-align: left; }
+  .activities_button { width: 100%; }
+  
+  .activities__mascot-small { 
+    right: -10px;
+    bottom: -40px;
+    width: 160px;
+    height: 160px;
+  }
+  
+  .records { padding: 60px 24px; }
+  .records__title { font-size: 28px; margin-bottom: 32px; }
+  .records__card { flex-direction: column; padding: 40px 24px; gap: 40px; }
+  .stat__number { font-size: 72px; }
+  .stat__label { font-size: 18px; }
+  .stat__divider { width: 100px; height: 2px; }
+  
+  .footer { flex-direction: column; padding: 60px 24px; align-items: center; text-align: center; gap: 40px; }
+  .footer__nav { flex-direction: column; margin-left: 0; gap: 40px; align-items: center; width: 100%; }
+  .footer__collab { align-items: center; }
 }

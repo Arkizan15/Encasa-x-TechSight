@@ -38,7 +38,6 @@ function renderHero() {
         <a href="#join" class="hero__btn" id="join">Join us</a>
       </div>
       <div class="hero__circle">
-        <img src="${ASSETS.maskCircle}" alt="" aria-hidden="true" />
       </div>
       <img src="${ASSETS.mascotFull}" alt="Encasa Mascot" class="hero__mascot" />
     </section>
@@ -93,6 +92,9 @@ function renderActivities() {
             community, ENCASA is the perfect place to grow, connect, and discover the joy of 
             learning English together.
           </p>
+          <button class="activities_button" href="">
+          Lihat Aktivitas
+           </button>
           <img src="${ASSETS.mascotHead}" alt="Mascot" class="activities__mascot-small" />
         </div>
       </div>
@@ -104,7 +106,7 @@ function renderRecords() {
   const stats = [
     { number: '3',    label: 'Years Growing Together' },
     { number: '10+',  label: 'English competition awards earned' },
-    { number: '2023', label: "Founded to develop students' English skills" },
+    { number: '2023', label: "Founded to develop students English skills" },
   ];
 
   return `
@@ -145,21 +147,7 @@ hamburger?.addEventListener('click', () => {
   navLinks.classList.toggle('open');
 });
 
-// Active nav link highlight on scroll
-const sections = document.querySelectorAll('section[id], footer');
-const navAnchors = document.querySelectorAll('.navbar__links a');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navAnchors.forEach(a => a.classList.remove('active'));
-      const active = document.querySelector(`.navbar__links a[href="#${entry.target.id}"]`);
-      if (active) active.classList.add('active');
-    }
-  });
-}, { threshold: 0.4 });
-
-sections.forEach(sec => observer.observe(sec));
+// Removed active nav link highlight on scroll based on user request (not a single page)
 
 // Stats count-up animation
 const statNumbers = document.querySelectorAll('.stat__number');
