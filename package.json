@@ -2,6 +2,7 @@
   "name": "encasa-x-techsight",
   "version": "0.0.0",
   "private": true,
+   "description": "Encasa - English Club Esemkasa Website",
   "type": "module",
   "scripts": {
     "dev": "vite",
