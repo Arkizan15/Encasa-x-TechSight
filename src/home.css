@@ -1,7 +1,3 @@
-/* ============================
-   ENCASA - CSS Design System
-   ============================ */
-
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -24,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
@@ -31,17 +28,18 @@ body {
   background: #fff;
   color: var(--color-black);
   overflow-x: hidden;
+  height: 100%;
 }
 
 /* ============================
    NAVBAR
    ============================ */
 .navbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;
+  height: 65px;
   background: var(--color-white);
   display: flex;
   align-items: center;
@@ -52,12 +50,9 @@ body {
   transition: box-shadow 0.3s ease;
 }
 
-.navbar.scrolled {
-  box-shadow: 0 4px 24px rgba(80, 132, 195, 0.18);
-}
 
 .navbar__logo {
-  height: 41px;
+  height: 60px;
   width: 100px;
   object-fit: contain;
 }
@@ -71,7 +66,7 @@ body {
 .navbar__links a {
   font-family: var(--font-inter);
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   color: var(--color-black);
   text-decoration: none;
   letter-spacing: var(--letter-spacing);
@@ -105,7 +100,7 @@ body {
 .hero {
   padding-top: 70px;
   width: 100%;
-  min-height: 617px;
+  height: 100vh;
   background: linear-gradient(to bottom, #5084d7 2.4%, #83a1d2 100%);
   position: relative;
   overflow: hidden;
@@ -187,7 +182,7 @@ body {
   object-fit: cover;
   object-position: top;
   z-index: 2;
-  animation: mascotFloat 4s ease-in-out infinite;
+  
 }
 
 .hero__circle {
@@ -318,13 +313,13 @@ body {
 
 .activities__mascot-small {
   position: absolute;
-  right: -30px;
-  bottom: -40px;
+  right: -20px;
+  bottom: -102px;
   width: 220px;
   height: 220px;
   object-fit: contain;
   z-index: 3;
-  animation: mascotFloat 5s ease-in-out infinite 1s;
+ 
 }
 
 /* ============================
@@ -413,7 +408,7 @@ body {
 .footer {
   background: var(--color-footer-bg);
   width: 100%;
-  min-height: 340px;
+  min-height: 200px;
   padding: 40px 103px;
   display: flex;
   align-items: flex-start;
@@ -442,8 +437,8 @@ body {
 }
 
 .footer__logo-img {
-  width: 96px;
-  height: 96px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
   background: #fff;
@@ -464,7 +459,7 @@ body {
 .footer__nav-col h4 {
   font-family: var(--font-inter);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 17px;
   color: var(--color-white);
   letter-spacing: var(--letter-spacing);
   margin-bottom: 12px;
@@ -475,7 +470,7 @@ body {
 .footer__nav-col a {
   font-family: var(--font-inter);
   font-weight: 600;
-  font-size: 18px;
+  font-size: 15px;
   color: var(--color-white);
   text-decoration: none;
   letter-spacing: var(--letter-spacing);
@@ -511,15 +506,7 @@ body {
   }
 }
 
-@keyframes mascotFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-16px); }
-}
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
 
 /* ============================
    MOBILE HAMBURGER (basic)
