@@ -261,7 +261,6 @@ body {
   overflow: hidden;
   position: relative;
   z-index: 2;
-  margin-left: 10px;
 }
 
 .activities__img-wrap img {
