@@ -18,9 +18,7 @@
   --letter-spacing: 1.2px;
 }
 
-html {
-  height: 100%;
-}
+html { height: 100%; }
 
 body {
   font-family: var(--font-inter);
@@ -34,7 +32,7 @@ body {
    NAVBAR
    ============================ */
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -49,6 +47,9 @@ body {
   transition: box-shadow 0.3s ease;
 }
 
+.navbar.scrolled {
+  box-shadow: 0 4px 20px rgba(80, 132, 195, 0.18);
+}
 
 .navbar__logo {
   height: 60px;
@@ -84,22 +85,17 @@ body {
   transition: width 0.3s ease;
 }
 
-.navbar__links a:hover {
-  color: var(--color-primary);
-}
-
+.navbar__links a:hover { color: var(--color-primary); }
 .navbar__links a:hover::after,
-.navbar__links a.active::after {
-  width: 100%;
-}
+.navbar__links a.active::after { width: 100%; }
 
 /* ============================
-   HERO SECTION
+   HERO
    ============================ */
 .hero {
-  padding-top: 70px;
+  padding-top: 60px;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(to bottom, #5084d7 2.4%, #83a1d2 100%);
   position: relative;
   overflow: hidden;
@@ -172,6 +168,16 @@ body {
   box-shadow: 0 8px 24px rgba(80, 132, 195, 0.35);
 }
 
+.hero__mascot-wrap {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 500px;
+  height: 560px;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
 .hero__mascot {
   position: absolute;
   right: 100px;
@@ -181,7 +187,6 @@ body {
   object-fit: cover;
   object-position: top;
   z-index: 2;
-  
 }
 
 .hero__circle {
@@ -196,35 +201,36 @@ body {
 }
 
 /* ============================
-   MARQUEE BANNER
+   SQUARE DIVIDER
    ============================ */
-.marquee-banner {
+.square-divider {
   width: 100%;
-  height: 122px;
+  height: 52px;
   background: var(--color-primary-mid);
   display: flex;
   align-items: center;
-  overflow: hidden;
+  justify-content: center;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
-.marquee-track {
-  display: flex;
-  gap: 80px;
-  animation: marquee 18s linear infinite;
-  white-space: nowrap;
+.square-divider__item {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.35);
+  transform: rotate(45deg);
+  flex-shrink: 0;
 }
 
-.marquee-track span {
-  font-family: var(--font-inter);
-  font-weight: 700;
-  font-size: 22px;
-  color: var(--color-white);
-  letter-spacing: 2px;
-  opacity: 0.85;
+.square-divider__item--accent {
+  background: rgba(255, 255, 255, 0.9);
+  width: 16px;
+  height: 16px;
 }
 
 /* ============================
-   ACTIVITIES SECTION
+   ACTIVITIES
    ============================ */
 .activities {
   width: 100%;
@@ -255,6 +261,7 @@ body {
   overflow: hidden;
   position: relative;
   z-index: 2;
+  margin-left: 10px;
 }
 
 .activities__img-wrap img {
@@ -337,11 +344,10 @@ body {
   height: 220px;
   object-fit: contain;
   z-index: 3;
- 
 }
 
 /* ============================
-   RECORDS / STATS SECTION
+   RECORDS
    ============================ */
 .records {
   width: 100%;
@@ -503,31 +509,14 @@ body {
 }
 
 /* ============================
-   SECOND MARQUEE BANNER
-   ============================ */
-.marquee-banner-2 {
-  width: 100%;
-  height: 122px;
-  background: var(--color-primary-mid);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-/* ============================
-   KEYFRAME ANIMATIONS
+   KEYFRAMES
    ============================ */
 @keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-
-
 /* ============================
-   MOBILE HAMBURGER (basic)
+   HAMBURGER
    ============================ */
 .navbar__hamburger {
   display: none;
@@ -536,6 +525,7 @@ body {
   cursor: pointer;
   background: none;
   border: none;
+  padding: 4px;
 }
 
 .navbar__hamburger span {
@@ -547,90 +537,169 @@ body {
   transition: 0.3s;
 }
 
-@media (max-width: 900px) {
+.navbar__hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.navbar__hamburger.open span:nth-child(2) { opacity: 0; }
+.navbar__hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* ============================
+   RESPONSIVE — TABLET (≤1024px)
+   ============================ */
+@media (max-width: 1024px) {
+  .navbar { padding: 0 32px; }
+  .hero__content { padding: 80px 0 60px 48px; }
+  .activities__inner { padding: 0 48px; }
+  .records { padding: 60px 48px; }
+  .footer { padding: 40px 48px; gap: 40px; }
+  .footer__nav { gap: 40px; }
+}
+
+/* ============================
+   RESPONSIVE — MOBILE (≤768px)
+   ============================ */
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar { padding: 0 20px; }
   .navbar__hamburger { display: flex; }
   .navbar__links {
     display: none;
     flex-direction: column;
     position: absolute;
     top: 60px;
-    right: 0;
+    left: 0;
     width: 100%;
-    background: #fff;
-    padding: 24px 40px;
+    background: var(--color-white);
+    padding: 20px 24px 28px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    gap: 20px;
+    gap: 16px;
     text-align: center;
+    z-index: 99;
   }
   .navbar__links.open { display: flex; }
-  .navbar { padding: 0 24px; }
-  
+
+  /* Hero */
   .hero {
-    height: auto;
-    min-height: 100vh;
+    min-height: 80svh;
     flex-direction: column;
-    padding-top: 80px;
-    padding-bottom: 0;
+    align-items: center;
+    padding-top: 60px;
   }
-  .hero__content { 
-    padding: 20px 24px 0;
+  .hero__content {
+    padding: 36px 24px 0;
     max-width: 100%;
     text-align: center;
-    margin: 0 auto;
   }
-  .hero__tagline { font-size: 20px; }
-  .hero__description { font-size: 16px; margin: 0 auto 32px; }
-  .hero__divider { width: 80%; margin: 0 auto 20px; }
-  
-  .hero__circle {
-    bottom: -50px;
-    right: 50%;
-    transform: translateX(50%);
-    width: 320px; 
-    height: 320px;
+  .hero__tagline { font-size: 18px; }
+  .hero__divider { width: 80%; max-width: 240px; margin: 0 auto 16px; }
+  .hero__description { font-size: 15px; max-width: 100%; margin-bottom: 28px; }
+  .hero__btn { font-size: 16px; padding: 10px 28px; }
+  .hero__mascot-wrap {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+    flex-shrink: 0;
   }
-  .hero__mascot { 
-    display: block; 
-    position: relative; 
-    right: auto; 
-    bottom: 0; 
-    height: 350px; 
-    width: auto; 
-    margin: 40px auto 0; 
+  .hero__mascot {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    height: 300px;
+    width: auto;
+    display: block;
     z-index: 2;
-    object-position: top;
   }
-  
-  .activities { padding: 60px 24px; }
-  .activities__inner { flex-direction: column; padding: 0; }
-  .activities__card { 
-    margin-left: 0; 
-    border-radius: 20px; 
-    margin-top: -30px; 
-    padding: 40px 24px 60px; 
-    text-align: center; 
-  }
-  .activities__img-wrap { width: 100%; height: 320px; border-radius: 20px; }
-  .activities__card-title { font-size: 24px; }
-  .activities__card-divider { margin: 0 auto 24px; }
-  .activities__card-text { font-size: 16px; text-align: left; }
-  .activities_button { width: 100%; }
-  
-  .activities__mascot-small { 
-    right: -10px;
+  .hero__circle {
+    position: absolute;
     bottom: -40px;
-    width: 160px;
-    height: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    width: 280px;
+    height: 280px;
+    z-index: 1;
   }
-  
-  .records { padding: 60px 24px; }
-  .records__title { font-size: 28px; margin-bottom: 32px; }
-  .records__card { flex-direction: column; padding: 40px 24px; gap: 40px; }
-  .stat__number { font-size: 72px; }
-  .stat__label { font-size: 18px; }
-  .stat__divider { width: 100px; height: 2px; }
-  
-  .footer { flex-direction: column; padding: 60px 24px; align-items: center; text-align: center; gap: 40px; }
-  .footer__nav { flex-direction: column; margin-left: 0; gap: 40px; align-items: center; width: 100%; }
-  .footer__collab { align-items: center; }
+
+  /* Square divider */
+  .square-divider { height: 40px; gap: 8px; }
+  .square-divider__item { width: 10px; height: 10px; }
+  .square-divider__item--accent { width: 12px; height: 12px; }
+
+  /* Activities */
+  .activities { padding: 40px 20px; min-height: unset; }
+  .activities__inner { flex-direction: column; padding: 0; }
+  .activities__img-wrap {
+    width: 100%;
+    height: 260px;
+    border-radius: 16px;
+  }
+  .activities__card {
+    margin-left: 0;
+    margin-top: -20px;
+    border-radius: 20px;
+    padding: 32px 24px 40px;
+  }
+  .activities__card-title { font-size: 20px; }
+  .activities__card-divider { width: 80px; margin-bottom: 20px; }
+  .activities__card-text { font-size: 15px; }
+  .activities_button { width: 100%; text-align: center; font-size: 15px; }
+  .activities__mascot-small {
+    right: -8px;
+    bottom: -50px;
+    width: 130px;
+    height: 130px;
+  }
+
+  /* Records — horizontal on mobile */
+  .records { padding: 48px 20px; min-height: unset; }
+  .records__title { font-size: 24px; margin-bottom: 28px; }
+  .records__card {
+    flex-direction: row;
+    padding: 24px 16px;
+    gap: 0;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .stat { gap: 6px; flex: 1; }
+  .stat__number { font-size: 32px; letter-spacing: 1px; }
+  .stat__label { font-size: 11px; max-width: 90px; }
+  .stat__divider {
+    width: 1px;
+    height: 64px;
+    flex-shrink: 0;
+  }
+
+  /* Footer */
+  .footer {
+    flex-direction: column;
+    padding: 40px 24px;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  .footer__collab { align-items: flex-start; }
+  .footer__collab-label { font-size: 16px; }
+  .footer__nav {
+    margin-left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .footer__nav-col h4 { font-size: 15px; }
+  .footer__nav-col a { font-size: 13px; }
+}
+
+/* ============================
+   RESPONSIVE — SMALL (≤400px)
+   ============================ */
+@media (max-width: 400px) {
+  .stat__number { font-size: 26px; }
+  .stat__label { font-size: 10px; max-width: 72px; }
+  .records__card { padding: 20px 10px; }
+  .square-divider { gap: 6px; }
+  .square-divider__item { width: 8px; height: 8px; }
+  .square-divider__item--accent { width: 10px; height: 10px; }
 }

@@ -3,7 +3,6 @@ import ASSETS from './assets.js';
 import renderNavbar from './components/navbar.js';
 import renderFooter from './components/footer.js';
 
-
 // =====================
 // RENDER APP
 // =====================
@@ -11,9 +10,8 @@ document.querySelector('#app').innerHTML = `
   ${renderNavbar()}
   <main>
     ${renderHero()}
-   
+    ${renderSquareDivider()}
     ${renderActivities()}
-   
     ${renderRecords()}
     ${renderFooter()}
   </main>
@@ -22,8 +20,6 @@ document.querySelector('#app').innerHTML = `
 // =====================
 // COMPONENT FUNCTIONS
 // =====================
-
-
 
 function renderHero() {
   return `
@@ -35,35 +31,20 @@ function renderHero() {
           Encasa, or English Club Esemkasa, is one of the extracurricular activities at 
           SMKN 1 Banyuwangi that serves as a platform to develop English language skills.
         </p>
-        <a href="#join" class="hero__btn" id="join">Join us</a>
+        <a href="#join" class="hero__btn">Join us</a>
       </div>
-      <div class="hero__circle">
+      <div class="hero__mascot-wrap">
+        <div class="hero__circle"></div>
+        <img src="${ASSETS.mascotFull}" alt="Encasa Mascot" class="hero__mascot" />
       </div>
-      <img src="${ASSETS.mascotFull}" alt="Encasa Mascot" class="hero__mascot" />
     </section>
   `;
 }
 
-function renderMarquee() {
-  const items = ['🌟 English Speaking', '📚 Public Speaking', '🏆 Competitions', '🎭 Storytelling', '🎓 Learning Together', '✨ Grow With English'];
-  const doubled = [...items, ...items];
-  return `
-    <div class="marquee-banner">
-      <div class="marquee-track">
-        ${doubled.map(i => `<span>${i}</span>`).join('')}
-      </div>
-    </div>
-  `;
-}
-
-function renderMarquee2() {
-  const items = ['🌟 3 Years Growing', '🏅 10+ Awards', '📅 Founded 2023', '🌏 Explore English', '💬 Speak Confidently', '🤝 Join Our Community'];
-  const doubled = [...items, ...items];
-  return `
-    <div class="marquee-banner-2 marquee-banner">
-      <div class="marquee-track" style="animation-direction: reverse;">
-        ${doubled.map(i => `<span>${i}</span>`).join('')}
-      </div>
+function renderSquareDivider() {
+   return `
+    <div class="square-divider">
+    
     </div>
   `;
 }
@@ -92,9 +73,9 @@ function renderActivities() {
             community, ENCASA is the perfect place to grow, connect, and discover the joy of 
             learning English together.
           </p>
-          <button class="activities_button" href="">
-          Lihat Aktivitas
-           </button>
+          <button class="activities_button">
+            Take a Look
+          </button>
           <img src="${ASSETS.mascotHead}" alt="Mascot" class="activities__mascot-small" />
         </div>
       </div>
@@ -106,7 +87,7 @@ function renderRecords() {
   const stats = [
     { number: '3',    label: 'Years Growing Together' },
     { number: '10+',  label: 'English competition awards earned' },
-    { number: '2023', label: "Founded to develop students English skills" },
+    { number: '2023', label: 'Founded to develop students English skills' },
   ];
 
   return `
@@ -125,7 +106,6 @@ function renderRecords() {
   `;
 }
 
-
 // =====================
 // INTERACTIVITY
 // =====================
@@ -133,25 +113,36 @@ function renderRecords() {
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 10) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
+  navbar.classList.toggle('scrolled', window.scrollY > 10);
 });
 
 // Hamburger menu toggle
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
+
 hamburger?.addEventListener('click', () => {
   navLinks.classList.toggle('open');
+  hamburger.classList.toggle('open');
 });
 
-// Removed active nav link highlight on scroll based on user request (not a single page)
+// Close nav on link click (mobile)
+navLinks?.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+  });
+});
 
-// Stats count-up animation
+// Close nav on outside click
+document.addEventListener('click', (e) => {
+  if (!navbar.contains(e.target)) {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+  }
+});
+
+// Stats fade-in animation
 const statNumbers = document.querySelectorAll('.stat__number');
-
 const statsObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -159,13 +150,6 @@ const statsObserver = new IntersectionObserver((entries) => {
       statsObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.4 });
 
 statNumbers.forEach(el => statsObserver.observe(el));
-
-// Close nav on link click (mobile)
-navLinks?.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-  });
-});
