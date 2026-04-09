@@ -3,6 +3,7 @@ import ASSETS from './assets.js';
 import renderNavbar from './components/navbar.js';
 import renderFooter from './components/footer.js';
 
+
 // =====================
 // RENDER APP
 // =====================
@@ -23,7 +24,7 @@ document.querySelector('#app').innerHTML = `
 
 function renderHero() {
   return `
-    <section class="hero" id="hero">
+    <section  class="hero" id="hero" style="body-background-color">
       <div class="hero__content">
         <p class="hero__tagline">Explore The World With English</p>
         <div class="hero__divider"></div>
@@ -38,7 +39,8 @@ function renderHero() {
         <img src="${ASSETS.mascotFull}" alt="Encasa Mascot" class="hero__mascot" />
       </div>
     </section>
-  `;
+    
+  `; 
 }
 
 function renderSquareDivider() {
