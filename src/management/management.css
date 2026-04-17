@@ -1,0 +1,170 @@
+:root {
+      --blue-primary: #587bb4;
+      --blue-dark: #4f6b98;
+      --blue-light: #eef2f9;
+      --text-light: #eeeeee;
+      --card-bg: #f5f5f5;
+      --radius: 15px;
+      --font: 'Inter', sans-serif;
+    }
+
+    /* ── Hero ── */
+    .management-hero {
+      padding: 48px 120px 32px;
+    }
+    .hero-title {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--text-light);
+      letter-spacing: -1.2px;
+      margin: 0 0 8px;
+    }
+    .hero-subtitle {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    /* ── Org Chart ── */
+    .org-section {
+      padding: 0 120px 48px;
+    }
+    .org-tree {
+      background: #f1f1f1;
+      border: 1px solid #000;
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+    }
+    .org-node-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .org-children {
+      display: flex;
+      gap: 24px;
+      position: relative;
+      padding-top: 32px;
+    }
+    .org-children::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 32px;
+      background: #aaa;
+    }
+    .org-children > .org-node-wrap::before {
+      content: '';
+      position: absolute;
+      top: -32px;
+      left: 50%;
+      width: 2px;
+      height: 32px;
+      background: #aaa;
+    }
+    .org-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      box-shadow: 0 4px 4px rgba(0,0,0,.15);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px 10px 10px;
+      min-width: 220px;
+      position: relative;
+    }
+    .org-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--blue-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .org-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .org-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #3d3d3d;
+    }
+    .org-role {
+      font-size: 13px;
+      color: #636363;
+    }
+
+    /* ── Divisions ── */
+    .divisions-section {
+      padding: 0 86px 80px;
+    }
+    .divisions-title {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--text-light);
+      letter-spacing: -1.2px;
+      margin: 0 0 32px;
+    }
+    .divisions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .accordion-item {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .accordion-item.is-open {
+      box-shadow: 0 8px 24px rgba(0,0,0,.1);
+    }
+    .accordion-header {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 34px 32px;
+      font-size: 22px;
+      font-weight: 600;
+      font-family: var(--font);
+      color: #1a1a1a;
+    }
+    .accordion-icon {
+      transition: transform .25s;
+      flex-shrink: 0;
+    }
+    .accordion-item.is-open .accordion-icon {
+      transform: rotate(180deg);
+    }
+    .accordion-body {
+      padding: 0 32px 28px 48px;
+    }
+    .member-list {
+      margin: 0;
+      padding-left: 20px;
+      list-style: disc;
+    }
+    .member-list li {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1a1a1a;
+      line-height: 1.8;
+    }
