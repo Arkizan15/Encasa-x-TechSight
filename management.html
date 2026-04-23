@@ -3,18 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Encasa - English Club Esemkasa</title>
-    <link rel="shortcut icon" href="Mascot/mascot-head.png" type="image/x-icon">
-    <link rel="stylesheet" href="./src/style.css" />
+    <meta name="description" content="Encasa - English Club Management Page" />
+    <meta name="theme-color" content="#587bb4" />
+    <title>Management - Encasa English Club</title>
+    <link rel="shortcut icon" href="public/Mascot/mascot-head.png" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@700&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <!-- Navigation Container -->
     <div id="app"></div>
-    <div id="management-hero"></div>
-    <div id="management-org"></div>
-    <div id="management-divisions"></div>
+
+    <!-- Management Page Sections -->
+    <main>
+      <!-- Hero Section -->
+      <section id="management-hero" aria-label="Management Hero Section"></section>
+
+      <!-- Organization Chart Section -->
+      <section id="management-org" aria-label="Organizational Structure"></section>
+
+      <!-- Divisions Accordion Section -->
+      <section id="management-divisions" aria-label="Divisions and Members"></section>
+    </main>
+
+    <!-- Footer Container -->
+    <footer id="footer"></footer>
+
+    <!-- Vite Module Script -->
     <script type="module" src="./src/management/management.js"></script>
   </body>
 </html>

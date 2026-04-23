@@ -6,6 +6,8 @@
 import ASSETS from '../assets.js';
 import renderNavbar from '../components/navbar.js';
 import renderFooter from '../components/footer.js';
+import '../home.css';
+import './management.css';
 
 // Inject navbar into #app
 document.querySelector('#app').innerHTML = renderNavbar();
@@ -52,6 +54,11 @@ const managementData = {
 };
 
 // ── FEATURE: HERO ─────────────────────────────────────────────
+/**
+ * Render hero section dengan title dan subtitle
+ * @param {string} containerId - ID dari container element
+ * @param {Object} data - Data hero yang berisi title dan subtitle
+ */
 function renderHero(containerId, data) {
   const el = document.getElementById(containerId);
   if (!el) return;
@@ -65,6 +72,11 @@ function renderHero(containerId, data) {
 }
 
 // ── FEATURE: ORG CHART ────────────────────────────────────────
+/**
+ * Build organization tree structure dari flat array
+ * @param {Array} nodes - Array of org nodes dengan parent-child relationship
+ * @returns {Array} Tree structure dengan parent nodes sebagai root
+ */
 function buildOrgTree(nodes) {
   const map = {};
   nodes.forEach((n) => (map[n.id] = { ...n, children: [] }));
@@ -76,9 +88,15 @@ function buildOrgTree(nodes) {
   return roots;
 }
 
+/**
+ * Render single org node dengan children
+ * @param {Object} node - Node object dengan id, name, role, children
+ * @returns {string} HTML string untuk org node
+ */
 function renderOrgNode(node) {
   const children = node.children.length
     ? `<div class="org-children">
+        <div class="org-connector"></div>
         ${node.children.map(renderOrgNode).join("")}
       </div>`
     : "";
@@ -99,6 +117,11 @@ function renderOrgNode(node) {
   `;
 }
 
+/**
+ * Render organizational chart
+ * @param {string} containerId - ID dari container element
+ * @param {Array} nodes - Array of org data
+ */
 function renderOrgChart(containerId, nodes) {
   const el = document.getElementById(containerId);
   if (!el) return;
@@ -106,37 +129,47 @@ function renderOrgChart(containerId, nodes) {
   const tree = buildOrgTree(nodes);
   el.innerHTML = `
     <section class="org-section">
-      <div class="org-tree">
-        ${tree.map(renderOrgNode).join("")}
+      <h2 class="org-title">Our Organizational Structure</h2>
+      <div class="org-tree-wrapper">
+        <div class="org-tree">
+          ${tree.map(renderOrgNode).join("")}
+        </div>
       </div>
     </section>
   `;
 }
 
 // ── FEATURE: DIVISIONS ACCORDION ──────────────────────────────
+/**
+ * Render divisions accordion section
+ * @param {string} containerId - ID dari container element
+ * @param {Array} divisions - Array of division objects
+ */
 function renderDivisions(containerId, divisions) {
   const el = document.getElementById(containerId);
   if (!el) return;
 
   el.innerHTML = `
     <section class="divisions-section">
-      <h2 class="divisions-title">The Divisions</h2>
-      <div class="divisions-grid">
-        ${divisions.map((div) => `
-          <div class="accordion-item" id="${div.id}">
-            <button class="accordion-header" aria-expanded="false" data-target="${div.id}-body">
-              <span>${div.name}</span>
-              <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </button>
-            <div class="accordion-body" id="${div.id}-body" hidden>
-              <ul class="member-list">
-                ${div.members.map((m) => `<li>${m}</li>`).join("")}
-              </ul>
+      <div class="divisions-container">
+        <h2 class="divisions-title">The Divisions</h2>
+        <div class="divisions-grid">
+          ${divisions.map((div) => `
+            <div class="accordion-item" id="${div.id}">
+              <button class="accordion-header" aria-expanded="false" data-target="${div.id}-body">
+                <span class="accordion-title">${div.name}</span>
+                <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+              <div class="accordion-body" id="${div.id}-body" hidden>
+                <ul class="member-list">
+                  ${div.members.map((m) => `<li class="member-item">${m}</li>`).join("")}
+                </ul>
+              </div>
             </div>
-          </div>
-        `).join("")}
+          `).join("")}
+        </div>
       </div>
     </section>
   `;
@@ -144,6 +177,10 @@ function renderDivisions(containerId, divisions) {
   initAccordion(containerId);
 }
 
+/**
+ * Initialize accordion event listeners
+ * @param {string} containerId - ID dari container element
+ */
 function initAccordion(containerId) {
   const el = document.getElementById(containerId);
   el.querySelectorAll(".accordion-header").forEach((btn) => {
@@ -152,7 +189,7 @@ function initAccordion(containerId) {
       const body = document.getElementById(bodyId);
       const isOpen = btn.getAttribute("aria-expanded") === "true";
 
-      // close all
+      // Close all other accordions
       el.querySelectorAll(".accordion-header").forEach((b) => {
         b.setAttribute("aria-expanded", "false");
         b.closest(".accordion-item").classList.remove("is-open");
@@ -161,7 +198,7 @@ function initAccordion(containerId) {
         b.hidden = true;
       });
 
-      // open clicked if was closed
+      // Toggle clicked accordion if it was closed
       if (!isOpen) {
         btn.setAttribute("aria-expanded", "true");
         btn.closest(".accordion-item").classList.add("is-open");
@@ -171,197 +208,15 @@ function initAccordion(containerId) {
   });
 }
 
-// ── STYLES ───────────────────────────────────────────────────
-function injectStyles() {
-  const style = document.createElement("style");
-  style.textContent = `
-    /* ── Variables ── */
-    :root {
-      --blue-primary: #587bb4;
-      --blue-dark: #4f6b98;
-      --blue-light: #eef2f9;
-      --text-light: #eeeeee;
-      --card-bg: #f5f5f5;
-      --radius: 15px;
-      --font: 'Inter', sans-serif;
-    }
+// ── INITIALIZE ───────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  renderHero('management-hero', managementData.hero);
+  renderOrgChart('management-org', managementData.orgChart);
+  renderDivisions('management-divisions', managementData.divisions);
 
-    /* ── Hero ── */
-    .management-hero {
-      padding: 48px 120px 32px;
-    }
-    .hero-title {
-      font-size: 40px;
-      font-weight: 700;
-      color: var(--text-light);
-      letter-spacing: -1.2px;
-      margin: 0 0 8px;
-    }
-    .hero-subtitle {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--text-light);
-      margin: 0;
-    }
-
-    /* ── Org Chart ── */
-    .org-section {
-      padding: 0 120px 48px;
-    }
-    .org-tree {
-      background: #f1f1f1;
-      border: 1px solid #000;
-      border-radius: 20px;
-      padding: 40px;
-      display: flex;
-      justify-content: center;
-      overflow-x: auto;
-    }
-    .org-node-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-    }
-    .org-children {
-      display: flex;
-      gap: 24px;
-      position: relative;
-      padding-top: 32px;
-    }
-    .org-children::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 2px;
-      height: 32px;
-      background: #aaa;
-    }
-    .org-children > .org-node-wrap::before {
-      content: '';
-      position: absolute;
-      top: -32px;
-      left: 50%;
-      width: 2px;
-      height: 32px;
-      background: #aaa;
-    }
-    .org-card {
-      background: var(--card-bg);
-      border-radius: 18px;
-      box-shadow: 0 4px 4px rgba(0,0,0,.15);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px 10px 10px;
-      min-width: 220px;
-      position: relative;
-    }
-    .org-avatar {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--blue-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 22px;
-      font-weight: 700;
-      color: #fff;
-    }
-    .org-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .org-name {
-      font-size: 15px;
-      font-weight: 600;
-      color: #3d3d3d;
-    }
-    .org-role {
-      font-size: 13px;
-      color: #636363;
-    }
-
-    /* ── Divisions ── */
-    .divisions-section {
-      padding: 0 86px 80px;
-    }
-    .divisions-title {
-      font-size: 40px;
-      font-weight: 700;
-      color: var(--text-light);
-      letter-spacing: -1.2px;
-      margin: 0 0 32px;
-    }
-    .divisions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .accordion-item {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: box-shadow .2s;
-    }
-    .accordion-item.is-open {
-      box-shadow: 0 8px 24px rgba(0,0,0,.1);
-    }
-    .accordion-header {
-      width: 100%;
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 34px 32px;
-      font-size: 22px;
-      font-weight: 600;
-      font-family: var(--font);
-      color: #1a1a1a;
-    }
-    .accordion-icon {
-      transition: transform .25s;
-      flex-shrink: 0;
-    }
-    .accordion-item.is-open .accordion-icon {
-      transform: rotate(180deg);
-    }
-    .accordion-body {
-      padding: 0 32px 28px 48px;
-    }
-    .member-list {
-      margin: 0;
-      padding-left: 20px;
-      list-style: disc;
-    }
-    .member-list li {
-      font-size: 20px;
-      font-weight: 600;
-      color: #1a1a1a;
-      line-height: 1.8;
-    }
-  `;
-  document.head.appendChild(style);
-}
-
-// ── INIT ──────────────────────────────────────────────────────
-function initManagementPage() {
-  injectStyles();
-  renderHero("management-hero", managementData.hero);
-  renderOrgChart("management-org", managementData.orgChart);
-  renderDivisions("management-divisions", managementData.divisions);
-
-  // Append footer at end of body
+  // Inject footer
   const footerEl = document.createElement('div');
-  footerEl.innerHTML = renderFooter();
+  footerEl.id = 'footer';
   document.body.appendChild(footerEl);
-}
-
-// Run after all declarations
-initManagementPage();
+  document.querySelector('#footer').innerHTML = renderFooter();
+});
