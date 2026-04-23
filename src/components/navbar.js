@@ -1,4 +1,5 @@
 import ASSETS from '../assets.js';
+import '../home.css';
 
 function renderNavbar() {
   return `
@@ -8,10 +9,10 @@ function renderNavbar() {
         <span></span><span></span><span></span>
       </button>
       <ul class="navbar__links" id="nav-links">
-        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="./index.html" class="active">Home</a></li>
         <li><a href="#gallery">Galery</a></li>
         <li><a href="#management">Management</a></li>
-        <li><a href="#join">Join us</a></li>
+        <li><a href="./join.html">Join us</a></li>
       </ul>
     </nav>
   `;
