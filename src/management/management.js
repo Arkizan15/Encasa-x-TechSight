@@ -13,6 +13,66 @@ import './management.css';
 document.querySelector('#app').innerHTML = renderNavbar();
 
 // ── MOCK DATA MULTI-GENERATION ──────────────────────────────
+// 
+// DOKUMENTASI STRUKTUR DATA:
+// ===========================
+// 
+// 1. ORGANIZATIONAL CHART (Bagan Organisasi)
+//    - Untuk menampilkan hierarchy/struktur organisasi per generasi
+//    - Berisi: pembina, leaders, treasurers, secretaries, dsb
+//    - Struktur: Array of objects dengan field:
+//      * id       : string unik (lowercase, no spaces) - untuk identifier internal
+//      * name     : string - nama lengkap member
+//      * role     : string - posisi/jabatan (Facilitator, Leader 1, Treasurer, dsb)
+//      * parentId : string/null - mengacu ke id parent (untuk hierarchy tree)
+//                  null = root/pembina (tidak ada parent)
+//    
+//    CARA MENAMBAH MEMBER BARU:
+//    { id: "unique-id", name: "NAMA LENGKAP", role: "Jabatan", parentId: "id-parent" }
+//    
+// 2. DIVISIONS (Divisi/Departemen)
+//    - Untuk menampilkan daftar divisi dan anggota per divisi
+//    - Berisi: public relation, creative, work program, competition, dsb
+//    - Struktur: Array of objects dengan field:
+//      * id      : string unik (lowercase-with-dash) - untuk identifier
+//      * name    : string - nama divisi (UPPERCASE)
+//      * members : array of strings - daftar nama anggota divisi
+//    
+//    CARA MENAMBAH DIVISI BARU:
+//    {
+//      id: "sie-division-name",
+//      name: "SIE DIVISION NAME",
+//      members: ["NAMA MEMBER 1", "NAMA MEMBER 2", "NAMA MEMBER 3"]
+//    }
+//    
+//    CARA MENAMBAH MEMBER KE DIVISI:
+//    - Tambahkan string ke array members: "NAMA LENGKAP"
+//    - Optional: Tambahkan role dengan format "NAMA LENGKAP (Role)"
+//      Contoh: "AISHAA FADHIYA LUNA (Coordinator)"
+//
+// 3. MENAMBAH GENERASI BARU
+//    - Tambahkan key baru di orgChartByGen dengan format "Gen X" (Gen 2, Gen 4, dsb)
+//    - Isi dengan array of objects sesuai struktur point 1
+//    - Tambahkan key baru di divisionsByGen dengan format sama "Gen X"
+//    - Isi dengan array of objects sesuai struktur point 2
+//    - Semua generasi akan otomatis muncul di dropdown selector
+//    
+// QUICK REFERENCE (Struktur Lengkap):
+//    orgChartByGen: {
+//      "Gen X": [
+//        { id: "pembina", name: "NAMA", role: "Facilitator", parentId: null },
+//        { id: "leader1", name: "NAMA", role: "Leader 1", parentId: "pembina" },
+//        { id: "child1", name: "NAMA", role: "Secretary", parentId: "leader1" },
+//      ]
+//    }
+//    
+//    divisionsByGen: {
+//      "Gen X": [
+//        { id: "sie-divname", name: "SIE DIVISION", members: ["NAMA1", "NAMA2"] }
+//      ]
+//    }
+//
+// ===========================
 const managementData = {
   hero: {
     title: "Management Encasa",
@@ -21,19 +81,32 @@ const managementData = {
 
   // Organizing data by generations
   orgChartByGen: {
+    // STRUKTUR HIERARCHY:
+    // Setiap generasi memiliki struktur tree dengan multiple levels
+    // - Level 1: Pembina/Root (parentId: null)
+    // - Level 2: Leaders (parentId: "pembina")
+    // - Level 3+: Sub-leaders, Treasurers, Secretaries (parentId: leader_id)
+    //
+    // PENTING: Pastikan parentId mengacu ke id yang sudah ada di array!
+    // Jika salah referensi, node tidak akan muncul di tree.
+    
     "Gen 3": [
-      // Level 1: Pembina
+      // ===== LEVEL 1: PEMBINA/ROOT =====
+      // Hanya 1 root yang parentId-nya null
       { id: "pembina", name: "SITI HALUMA SADA", role: "Facilitator", parentId: null },
       
-      // Level 2: Leaders (Terhubung ke Pembina)
+      // ===== LEVEL 2: LEADERS (anak dari pembina) =====
+      // parentId harus mengacu ke "pembina"
       { id: "leader1", name: "ARKAN RIFQY FAUZAN", role: "Leader 1", parentId: "pembina" },
       { id: "leader2", name: "ARVATIA PUTRI RAMADHANI", role: "Leader 2", parentId: "pembina" },
       
-      // Level 3: Children dari Leader 1
+      // ===== LEVEL 3: CHILDREN DARI LEADER 1 =====
+      // parentId harus mengacu ke "leader1"
       { id: "tr1", name: "EKA PUTRI FEBRIYANTI", role: "Treasurer 1", parentId: "leader1" },
       { id: "sec1", name: "ZORA AYU SEPSA KIRARA", role: "Secretary 1", parentId: "leader1" },
       
-      // Level 3: Children dari Leader 2
+      // ===== LEVEL 3: CHILDREN DARI LEADER 2 =====
+      // parentId harus mengacu ke "leader2"
       { id: "tr2", name: "AKHISYA ELMA ZAKIYA", role: "Treasurer 2", parentId: "leader2" },
       { id: "sec2", name: "CIKA ZAHRATUS SYITA", role: "Secretary 2", parentId: "leader2" },
     ],
@@ -47,7 +120,23 @@ const managementData = {
 
   // Organizing divisions by generation
   divisionsByGen: {
+    // STRUKTUR DIVISIONS (Divisi/Departemen per Generasi)
+    // Setiap divisi menampilkan list member yang bergabung
+    // Tidak ada hierarchy, hanya list flat dari members
+    //
+    // FIELD YANG WAJIB ADA:
+    // - id      : string unik, format "sie-division-name" (lowercase-with-dash)
+    // - name    : string uppercase, nama divisi lengkap
+    // - members : array of strings, daftar anggota
+    //
+    // TIPS:
+    // 1. Gunakan "(Role)" di akhir nama untuk menunjukkan posisi
+    //    Contoh: "NAMA LENGKAP (Coordinator)" atau "NAMA LENGKAP (Vice Lead)"
+    // 2. Jika tidak ada role khusus, tulis nama saja
+    // 3. Urutan members tidak ada pengaruh ke tampilan
+    
     "Gen 3": [
+      // ===== DIVISI 1: PUBLIC RELATION =====
       {
         id: "sie-public-relation",
         name: "SIE PUBLIC RELATION",
@@ -56,6 +145,7 @@ const managementData = {
           "MUHAMMAD IRSYAD ERMAN",
         ],
       },
+      // ===== DIVISI 2: CREATIVE =====
       {
         id: "sie-creative",
         name: "SIE CREATIVE",
@@ -65,6 +155,7 @@ const managementData = {
           "DWI DELI NOVITASARI",
         ],
       },
+      // ===== DIVISI 3: WORK PROGRAM =====
       {
         id: "sie-work-program",
         name: "SIE WORK PROGRAM",
@@ -73,6 +164,7 @@ const managementData = {
           "DAVINA MAIZA WILLY PUTRI",
         ],
       },
+      // ===== DIVISI 4: CONTENT =====
       {
         id: "sie-content",
         name: 'CONTENT DIVISION',
@@ -81,6 +173,7 @@ const managementData = {
           "HAWASIVA DEWI SANJAYA"
         ]
       },
+      // ===== DIVISI 5: COMPETITION =====
       {
         id: "sie-competition",
         name: "SIE COMPETITION",
@@ -90,6 +183,9 @@ const managementData = {
         ],
       },
     ],
+    // ===== GEN 1 DIVISIONS =====
+    // Gunakan struktur yang sama dengan Gen 3 di atas
+    // Hanya ubah: id, name, members sesuai data generasi
     "Gen 1": [
       {
         id: "div-proker-2023",
