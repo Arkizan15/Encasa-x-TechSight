@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Documentation files (except README.md)
+TESTING_VERIFICATION.md
+CSS_EFFECTS_REFERENCE.md
+IMPLEMENTATION_CHECKLIST.md
+QUICKSTART.md
+MANAGEMENT_PAGE_GUIDE.md
