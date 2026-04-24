@@ -1,668 +1,317 @@
-/* ============================================================
-   Management Page - CSS Modern & Mobile-First
-   Encasa x TechSight
-   ============================================================ */
-
-/* ── ROOT VARIABLES ──────────────────────────────────────────-- */
+/* ── VARIABLE & RESET ────────────────────────────────────── */
 :root {
   --blue-primary: #587bb4;
-  --blue-bg: #4f6b98;
+  --blue-bg: #648bc7;
   --text-white: #eeeeee;
-  --card-bg: #f5f5f5;
-  --blue-light: #eef2f9;
+  --card-bg: #ffffff;
   --text-dark: #333333;
-  --text-muted: #666666;
-  --white: #ffffff;
-  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-/* ── BASE STYLES ─────────────────────────────────────────── */
-body {
-  font-family: var(--font-family);
-  color: var(--text-dark);
-  line-height: 1.6;
+  --connector-color: #ffffff;
+  --shadow-bottom: #4a6691;
+  --font-family: 'Inter', -apple-system, sans-serif;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--blue-primary);
+  color: var(--text-dark);
+  overflow-x: hidden;
 }
 
 /* ── HERO SECTION ────────────────────────────────────────── */
 #management-hero {
-  background: linear-gradient(135deg, var(--blue-bg) 0%, var(--blue-primary) 100%);
-  position: relative;
-  overflow: hidden;
-  padding: 2rem 1rem;
-}
-
-/* Grid background pattern */
-#management-hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-}
-
-.management-hero {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 280px;
+  padding: 5rem 1rem 1rem;
+  text-align: center;
+  background-color: #4a6691;
 }
 
 .hero-title {
-  font-size: clamp(28px, 6vw, 48px);
-  font-weight: 700;
+  font-size: clamp(28px, 6vw, 40px);
   color: var(--text-white);
-  letter-spacing: -0.5px;
-  margin: 0 0 12px 0;
-  animation: slideInDown 0.6s ease-out;
+  font-weight: 800;
+  margin-bottom: 8px;
 }
 
 .hero-subtitle {
-  font-size: clamp(16px, 4vw, 24px);
-  font-weight: 500;
-  color: rgba(238, 238, 238, 0.9);
-  margin: 0;
-  animation: slideInUp 0.6s ease-out 0.2s both;
-}
-
-@keyframes slideInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  font-size: clamp(16px, 4vw, 22px);
+  color: var(--text-white);
+  opacity: 0.9;
 }
 
 /* ── ORGANIZATIONAL CHART ────────────────────────────────── */
 .org-section {
-  padding: 3rem 1rem;
-  background: #fafafa;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.org-title {
-  font-size: clamp(24px, 5vw, 32px);
+/* Tombol Select Gen (Paling Kiri) */
+.org-header {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.gen-select {
+  padding: 8px 35px 8px 15px;
+  border-radius: 20px;
+  background: var(--card-bg);
+  color: var(--blue-primary);
+  border: none;
   font-weight: 700;
-  color: var(--text-dark);
-  margin: 0 0 2rem 0;
-  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23587bb4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
 }
 
+/* Tree Wrapper with Grid Background */
 .org-tree-wrapper {
-  background: var(--white);
-  border-radius: var(--radius-xl);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-md);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  background-color: var(--blue-bg);
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+  border-radius: 24px;
+  padding: 40px 10px;
+  overflow-x: auto; /* Fallback jika screen sangat kecil */
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .org-tree {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  padding: 1rem;
   min-width: min-content;
 }
 
-/* Org Node Wrapper & Card */
+/* ── TREE CONNECTOR LOGIC ───────────────────────────────── */
 .org-node-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-  flex-shrink: 0;
+  position: relative;
+  padding: 25px 10px 0 10px;
 }
 
+/* Garis Horizontal */
+.org-node-wrap::before, .org-node-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 2px solid var(--connector-color);
+  width: 50%;
+  height: 25px;
+}
+.org-node-wrap::after {
+  right: auto;
+  left: 50%;
+  border-left: 2px solid var(--connector-color);
+}
+
+/* Hapus garis untuk elemen tunggal/root */
+.org-node-wrap:only-child::after, .org-node-wrap:only-child::before { display: none; }
+.org-node-wrap:only-child { padding-top: 0; }
+.org-node-wrap:first-child::before, .org-node-wrap:last-child::after { border: 0 none; }
+.org-node-wrap:last-child::before { border-right: 2px solid var(--connector-color); border-radius: 0 6px 0 0; }
+.org-node-wrap:first-child::after { border-radius: 6px 0 0 0; }
+
+/* Garis Vertikal dari Parent */
+.org-children {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+  position: relative;
+}
+.org-children::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 2px solid var(--connector-color);
+  width: 0;
+  height: 25px;
+  transform: translateX(-50%);
+}
+
+/* Arrowhead (Panah) */
+.arrow {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translate(-50%, -1px);
+  border-width: 6px 5px 0 5px;
+  border-style: solid;
+  border-color: var(--connector-color) transparent transparent transparent;
+}
+
+/* ── ORG CARD DESIGN ───────────────────────────────────── */
 .org-card {
   display: flex;
   align-items: center;
-  gap: 1rem;
   background: var(--card-bg);
-  padding: 1rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-light);
-  
-  /* White highlight/shadow effect */
+  border-radius: 40px;
+  padding: 8px 20px 8px 8px;
+  gap: 12px;
   position: relative;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  
-  /* Glow effect on top and left */
-  box-shadow: 
-    -4px -4px 12px rgba(255, 255, 255, 0.8),
-    2px 2px 8px rgba(0, 0, 0, 0.08);
-  
-  transition: var(--transition);
+  z-index: 2;
   min-width: 200px;
-}
-
-.org-card:hover {
+  /* Shadow: Inset White Highlight (atas) & Solid Dark Shadow (bawah) */
   box-shadow: 
-    -6px -6px 16px rgba(255, 255, 255, 1),
-    4px 4px 12px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
+    inset 0 3px 6px rgba(255,255,255,1), 
+    0 5px 0px var(--shadow-bottom),
+    0 10px 15px rgba(0,0,0,0.1);
 }
 
 .org-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, var(--blue-primary), var(--blue-bg));
+  width: 45px;
+  height: 45px;
+  background: #e0e0e0;
+  border-radius: 50%;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-white);
-  font-weight: 700;
-  font-size: 18px;
-  flex-shrink: 0;
+}
+
+.org-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .org-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  min-width: 0;
 }
 
 .org-name {
-  font-weight: 600;
   font-size: 14px;
-  color: var(--text-dark);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight: 700;
+  color: #1a1a1a;
 }
 
 .org-role {
   font-size: 12px;
-  color: var(--text-muted);
+  color: #666;
   font-weight: 500;
 }
 
-/* Organization Children & Connectors */
-.org-children {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  position: relative;
-  justify-content: center;
-  flex-wrap: wrap;
+/* ── RESPONSIVE MOBILE (SMALL SIZE FIX) ─────────────────── */
+@media (max-width: 600px) {
+  .org-tree-wrapper {
+    background-size: 20px 20px;
+    padding: 30px 5px;
+  }
+
+  .org-node-wrap {
+    padding: 15px 3px 0 3px; /* Rapatkan jarak antar kolom */
+  }
+
+  /* Perkecil Card agar 4 kolom muat (Leader 1 & 2 side-by-side) */
+  .org-card {
+    min-width: 85px; 
+    padding: 4px 6px 4px 4px;
+    gap: 4px;
+    border-radius: 12px;
+    box-shadow: 
+      inset 0 2px 4px rgba(255,255,255,1), 
+      0 3px 0px var(--shadow-bottom);
+  }
+
+  .org-avatar {
+    width: 22px;
+    height: 22px;
+  }
+
+  .org-name {
+    font-size: 8px;
+    line-height: 1;
+    max-width: 55px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .org-role {
+    font-size: 7px;
+  }
+
+  /* Perkecil Garis & Panah */
+  .org-node-wrap::before, .org-node-wrap::after, .org-children::before {
+    height: 15px;
+  }
+  .org-children { padding-top: 15px; }
+  .arrow { 
+    top: 15px; 
+    border-width: 4px 3px 0 3px; 
+  }
 }
 
-/* Vertical connector line */
-.org-connector {
-  position: absolute;
-  top: -1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 1.5rem;
-  background: linear-gradient(to bottom, var(--blue-primary), var(--blue-primary));
-}
-
-/* Horizontal connector (using pseudo-element) */
-.org-children::before {
-  content: "";
-  position: absolute;
-  top: -1.5rem;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, var(--blue-primary) 50%, transparent 100%);
-}
-
-/* Dots at connection points */
-.org-children::after {
-  content: "";
-  position: absolute;
-  top: -1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
-  background: var(--blue-primary);
-  border-radius: 50%;
-  border: 3px solid var(--white);
-  box-shadow: 0 0 0 2px var(--blue-primary);
-}
-
-/* ── DIVISIONS SECTION ───────────────────────────────────── */
-#management-divisions {
-  background: linear-gradient(135deg, var(--blue-bg) 0%, var(--blue-primary) 100%);
-  padding: 3rem 1rem;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Grid background pattern */
-#management-divisions::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-}
-
+/* ── DIVISIONS ACCORDION ────────────────────────────────── */
 .divisions-section {
-  position: relative;
-  z-index: 1;
-}
-
-.divisions-container {
+  padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .divisions-title {
-  font-size: clamp(24px, 5vw, 32px);
-  font-weight: 700;
   color: var(--text-white);
-  margin: 0 0 2rem 0;
-  text-align: center;
+  font-size: 32px;
+  margin-bottom: 24px;
 }
 
-/* Grid Layout - Mobile First */
 .divisions-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  auto-flow: dense;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  align-items: start;
 }
 
-/* Accordion Item */
 .accordion-item {
-  background: var(--white);
-  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: var(--shadow-light);
-  transition: var(--transition);
-  animation: fadeInUp 0.5s ease-out;
-}
-
-.accordion-item.is-open {
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Accordion Header */
 .accordion-header {
   width: 100%;
-  padding: 1.25rem;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, rgba(88, 123, 180, 0.05), rgba(79, 107, 152, 0.05));
+  background: none;
   border: none;
   cursor: pointer;
-  transition: var(--transition);
-  font-family: var(--font-family);
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--blue-primary);
-}
-
-.accordion-header:hover {
-  background: linear-gradient(135deg, rgba(88, 123, 180, 0.1), rgba(79, 107, 152, 0.1));
-}
-
-.accordion-header:active {
-  transform: scale(0.98);
-}
-
-.accordion-title {
-  text-align: left;
-  display: block;
-}
-
-.accordion-icon {
-  width: 24px;
-  height: 24px;
-  color: var(--blue-primary);
-  transition: var(--transition);
-  flex-shrink: 0;
-  margin-left: 1rem;
-}
-
-.accordion-header[aria-expanded="true"] .accordion-icon {
-  transform: rotate(180deg);
-}
-
-/* Accordion Body */
-.accordion-body {
-  max-height: 1000px;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.accordion-body[hidden] {
-  max-height: 0;
-  overflow: hidden;
-}
-
-.member-list {
-  list-style: none;
-  padding: 1.25rem;
-  margin: 0;
-  border-top: 1px solid #e0e0e0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.member-item {
-  padding-left: 0;
-  font-size: 15px;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  transition: var(--transition);
-}
-
-.member-item::before {
-  content: "•";
-  color: var(--blue-primary);
-  font-weight: bold;
-  margin-right: 0.75rem;
+  font-weight: 700;
   font-size: 18px;
 }
 
-.member-item:hover {
-  color: var(--text-dark);
-  padding-left: 0.5rem;
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  background: #fafafa;
 }
 
-/* ── RESPONSIVE DESIGN ───────────────────────────────────── */
-
-/* Tablet (≥ 640px) */
-@media (min-width: 640px) {
-  .divisions-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .org-tree-wrapper {
-    padding: 2rem;
-  }
-
-  .management-hero {
-    min-height: 320px;
-  }
+.accordion-body-inner {
+  padding: 0 20px;
 }
 
-/* Desktop (≥ 1024px) */
-@media (min-width: 1024px) {
-  #management-hero {
-    padding: 3rem 2rem;
-  }
-
-  .management-hero {
-    min-height: 360px;
-  }
-
-  .org-section {
-    padding: 4rem 2rem;
-  }
-
-  #management-divisions {
-    padding: 4rem 2rem;
-  }
-
-  .divisions-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .org-tree {
-    gap: 2rem;
-  }
-
-  .org-card {
-    min-width: 220px;
-  }
-
-  .accordion-header {
-    padding: 1.5rem;
-    font-size: 17px;
-  }
-
-  .member-list {
-    padding: 1.5rem;
-  }
+.accordion-item.is-open .accordion-body {
+  max-height: 500px;
 }
 
-/* Large Desktop (≥ 1440px) */
-@media (min-width: 1440px) {
-  .divisions-container {
-    max-width: 1400px;
-  }
-
-  .org-section {
-    padding: 4rem 4rem;
-  }
-
-  #management-divisions {
-    padding: 4rem 4rem;
-  }
-
-  .divisions-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
+.accordion-item.is-open .accordion-body-inner {
+  padding: 20px 20px;
 }
-
-/* ── ACCESSIBILITY ───────────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #1a1a1a;
-    color: #e0e0e0;
-  }
-
-  .org-tree-wrapper {
-    background: #2a2a2a;
-  }
-
-  .org-card {
-    background: #333333;
-    box-shadow: 
-      -4px -4px 12px rgba(255, 255, 255, 0.1),
-      2px 2px 8px rgba(0, 0, 0, 0.4);
-  }
-
-  .accordion-item {
-    background: #2a2a2a;
-  }
-
-  .accordion-header {
-    background: rgba(88, 123, 180, 0.15);
-  }
-
-  .accordion-header:hover {
-    background: rgba(88, 123, 180, 0.25);
-  }
-
-  .org-name {
-    color: #e0e0e0;
-  }
-}
-
-/* Focus styles for keyboard navigation */
-.accordion-header:focus,
-.org-card:focus {
-  outline: 2px solid var(--blue-primary);
-  outline-offset: 2px;
-}
-      position: relative;
-      padding-top: 32px;
-    }
-    .org-children::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 2px;
-      height: 32px;
-      background: #aaa;
-    }
-    .org-children > .org-node-wrap::before {
-      content: '';
-      position: absolute;
-      top: -32px;
-      left: 50%;
-      width: 2px;
-      height: 32px;
-      background: #aaa;
-    }
-    .org-card {
-      background: var(--card-bg);
-      border-radius: 18px;
-      box-shadow: 0 4px 4px rgba(0,0,0,.15);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px 10px 10px;
-      min-width: 220px;
-      position: relative;
-    }
-    .org-avatar {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--blue-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 22px;
-      font-weight: 700;
-      color: #fff;
-    }
-    .org-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .org-name {
-      font-size: 15px;
-      font-weight: 600;
-      color: #3d3d3d;
-    }
-    .org-role {
-      font-size: 13px;
-      color: #636363;
-    }
-
-    /* ── Divisions ── */
-    .divisions-section {
-      padding: 0 86px 80px;
-    }
-    .divisions-title {
-      font-size: 40px;
-      font-weight: 700;
-      color: var(--text-light);
-      letter-spacing: -1.2px;
-      margin: 0 0 32px;
-    }
-    .divisions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .accordion-item {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: box-shadow .2s;
-    }
-    .accordion-item.is-open {
-      box-shadow: 0 8px 24px rgba(0,0,0,.1);
-    }
-    .accordion-header {
-      width: 100%;
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 34px 32px;
-      font-size: 22px;
-      font-weight: 600;
-      font-family: var(--font);
-      color: #1a1a1a;
-    }
-    .accordion-icon {
-      transition: transform .25s;
-      flex-shrink: 0;
-    }
-    .accordion-item.is-open .accordion-icon {
-      transform: rotate(180deg);
-    }
-    .accordion-body {
-      padding: 0 32px 28px 48px;
-    }
-    .member-list {
-      margin: 0;
-      padding-left: 20px;
-      list-style: disc;
-    }
-    .member-list li {
-      font-size: 20px;
-      font-weight: 600;
-      color: #1a1a1a;
-      line-height: 1.8;
-    }
