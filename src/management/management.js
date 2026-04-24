@@ -21,23 +21,23 @@ const managementData = {
 
   // Organizing data by generations
   orgChartByGen: {
-    "Gen 2024": [
+    "Gen 3": [
       // Level 1: Pembina
-      { id: "pembina", name: "Nama Pembina", role: "Pembina", parentId: null },
+      { id: "pembina", name: "SITI HALUMA SADA", role: "Facilitator", parentId: null },
       
       // Level 2: Leaders (Terhubung ke Pembina)
-      { id: "leader1", name: "Leader 1", role: "Leader", parentId: "pembina" },
-      { id: "leader2", name: "Leader 2", role: "Leader", parentId: "pembina" },
+      { id: "leader1", name: "ARKAN RIFQY FAUZAN", role: "Leader 1", parentId: "pembina" },
+      { id: "leader2", name: "ARVATIA PUTRI RAMADHANI", role: "Leader 2", parentId: "pembina" },
       
       // Level 3: Children dari Leader 1
-      { id: "tr1", name: "Treasurer 1", role: "Treasurer", parentId: "leader1" },
-      { id: "sec1", name: "Secretary 1", role: "Secretary", parentId: "leader1" },
+      { id: "tr1", name: "EKA PUTRI FEBRIYANTI", role: "Treasurer 1", parentId: "leader1" },
+      { id: "sec1", name: "ZORA AYU SEPSA KIRARA", role: "Secretary 1", parentId: "leader1" },
       
       // Level 3: Children dari Leader 2
-      { id: "tr2", name: "Treasurer 2", role: "Treasurer", parentId: "leader2" },
-      { id: "sec2", name: "Secretary 2", role: "Secretary", parentId: "leader2" },
+      { id: "tr2", name: "AKHISYA ELMA ZAKIYA", role: "Treasurer 2", parentId: "leader2" },
+      { id: "sec2", name: "CIKA ZAHRATUS SYITA", role: "Secretary 2", parentId: "leader2" },
     ],
-    "Gen 2023": [
+    "Gen 1": [
       { id: "root", name: "Rifqy Arkan Fauzan", role: "Ketua", parentId: null },
       { id: "wk1",  name: "Wakil Satu", role: "Wakil Ketua", parentId: "root" },
       { id: "m1",   name: "Anggota Tim", role: "Sekretaris",  parentId: "wk1" },
@@ -47,29 +47,50 @@ const managementData = {
 
   // Organizing divisions by generation
   divisionsByGen: {
-    "Gen 2024": [
+    "Gen 3": [
       {
-        id: "div-proker-2024",
-        name: "Workprogram Division",
-        members: ["Muhammad Abdul Rohim", "Dhika Surya Ismawanto"],
+        id: "sie-public-relation",
+        name: "SIE PUBLIC RELATION",
+        members: [
+          "AISHAA FADHIYA LUNA (Coordinator)",
+          "MUHAMMAD IRSYAD ERMAN",
+        ],
       },
       {
-        id: "div-proker2-2024",
-        name: "Internal Division",
-        members: ["Member One", "Member Two"],
+        id: "sie-creative",
+        name: "SIE CREATIVE",
+        members: [
+          "NASHWA ARINDYA SEKAR AYU JASMINE KINANTHI (Coordinator)",
+          "TYAS ALVITA MULYANI",
+          "DWI DELI NOVITASARI",
+        ],
       },
       {
-        id: "div-proker3-2024",
-        name: "External Division",
-        members: ["Member X", "Member Y"],
+        id: "sie-work-program",
+        name: "SIE WORK PROGRAM",
+        members: [
+          "BERLIANA SASCA SYAHIRA (Coordinator)",
+          "DAVINA MAIZA WILLY PUTRI",
+        ],
       },
       {
-        id: "div-proker4-2024",
-        name: "HR Division",
-        members: ["John Doe", "Jane Doe"],
+        id: "sie-content",
+        name: 'CONTENT DIVISION',
+        members : [
+          "NADIA FAUSTINA WIDYADHANA (Coordinator)",
+          "HAWASIVA DEWI SANJAYA"
+        ]
+      },
+      {
+        id: "sie-competition",
+        name: "SIE COMPETITION",
+        members: [
+          "KENZIE DZAKY WAHYUDI (Coordinator)",
+          "FILBERT LIEM",
+        ],
       },
     ],
-    "Gen 2023": [
+    "Gen 1": [
       {
         id: "div-proker-2023",
         name: "Program Division",
@@ -90,12 +111,12 @@ const managementData = {
 };
 
 // State
-let currentGen = "Gen 2024";
+let currentGen = "Gen 3";
 
 // ── FEATURE: HERO ─────────────────────────────────────────────
 function renderHero(containerId, data) {
   const el = document.getElementById(containerId);
-  if (!el) return;
+  if (!el) return;``
 
   el.innerHTML = `
     <div class="management-hero">
@@ -141,9 +162,6 @@ function renderOrgNode(node) {
     <div class="org-node-wrap" data-node-id="${node.id}" ${siblingAttr}>
       ${arrowHtml}
       <div class="org-card">
-        <div class="org-avatar">
-          <img src="${ASSETS.mascotHead}" alt="Avatar"/>
-        </div>
         <div class="org-info">
           <span class="org-name">${node.name}</span>
           <span class="org-role">${node.role}</span>
