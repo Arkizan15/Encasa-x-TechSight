@@ -111,10 +111,24 @@ const managementData = {
       { id: "sec2", name: "CIKA ZAHRATUS SYITA", role: "Secretary 2", parentId: "leader2" },
     ],
     "Gen 1": [
-      { id: "root", name: "Rifqy Arkan Fauzan", role: "Ketua", parentId: null },
-      { id: "wk1",  name: "Wakil Satu", role: "Wakil Ketua", parentId: "root" },
-      { id: "m1",   name: "Anggota Tim", role: "Sekretaris",  parentId: "wk1" },
-      { id: "m2",   name: "Anggota Tim2", role: "Bendahara",  parentId: "wk1" },
+      // ===== LEVEL 1: PEMBINA/ROOT =====
+      // Hanya 1 root yang parentId-nya null
+      { id: "pembina", name: "PUTRI NUGRAHA", role: "Facilitator", parentId: null },
+      
+      // ===== LEVEL 2: LEADERS (anak dari pembina) =====
+      // parentId harus mengacu ke "pembina"
+      { id: "leader1", name: "NATASYA JULIANA", role: "Leader 1", parentId: "pembina" },
+      { id: "leader2", name: "ARCHIEKA ADYA LATHIEFA", role: "Leader 2", parentId: "pembina" },
+      
+      // ===== LEVEL 3: CHILDREN DARI LEADER 1 =====
+      // parentId harus mengacu ke "leader1"
+      { id: "tr1", name: "DIESYA RAHMADHANTI", role: "Treasurer 1", parentId: "leader1" },
+      { id: "sec1", name: "INTAN FAJRIN NURHIDAYAH", role: "Secretary 1", parentId: "leader1" },
+      
+      // ===== LEVEL 3: CHILDREN DARI LEADER 2 =====
+      // parentId harus mengacu ke "leader2"
+      { id: "tr2", name: "AGATHA KARUNIA", role: "Treasurer 2", parentId: "leader2" },
+      { id: "sec2", name: "MAHARANI VALENSYA", role: "Secretary 2", parentId: "leader2" },
     ]
   },
 
@@ -167,7 +181,7 @@ const managementData = {
       // ===== DIVISI 4: CONTENT =====
       {
         id: "sie-content",
-        name: 'CONTENT DIVISION',
+        name: 'SIE CONTENT',
         members : [
           "NADIA FAUSTINA WIDYADHANA (Coordinator)",
           "HAWASIVA DEWI SANJAYA"
@@ -187,20 +201,45 @@ const managementData = {
     // Gunakan struktur yang sama dengan Gen 3 di atas
     // Hanya ubah: id, name, members sesuai data generasi
     "Gen 1": [
+      // ===== DIVISI 1: PUBLIC RELATION =====
       {
-        id: "div-proker-2023",
-        name: "Program Division",
-        members: ["Rifqy Arkan Fauzan", "Wakil Satu"],
+        id: "sie-public-relation",
+        name: "SIE PUBLIC RELATION",
+        members: [
+          "FAHRY IBRAHIM AZMAR KHANDY (Coordinator)",
+          "EVAN EKA KURNIAWAN",
+          "M. RAFLI DWI SAPUTRA",
+          "NINA AMARA PRADISTA",
+          "AHMAD NABIL AL GHIFARI",
+          "SUHARTA NUR JAYADI",
+          "RIO SOVIANTO",
+          "JESIKA KHOFIFATUSSANI",
+          "BERLIANA KARIMATUS",
+          "MAULADANA HABIBIE",
+          "RAYHAN",
+        ],
       },
+      // ===== DIVISI 2: TIK =====
       {
-        id: "div-internal-2023",
-        name: "Internal Affairs",
-        members: ["Anggota Tim", "Anggota Tim2"],
-      },
-      {
-        id: "div-external-2023",
-        name: "External Relations",
-        members: ["Member Alpha", "Member Beta"],
+        id: "sie-tik",
+        name: "SIE TIK",
+        members: [
+          "I KOMANG CANDRA SUARDINATA (Coordinator)",
+          "ARIELLA RIVERA SANDY",
+          "NAYLA ALVIAN NURI",
+          "ABHIPRAYA JAGAD",
+          "ARVANDA REIHANSYAH",
+          "ROBBANI FADHILLAH KAFURA",
+          "REIVANDA YOGA SAPUTRA",
+          "AURA ZAHRAINY WIBOWO",
+          "CATHERINA ANGEL LADYSTA",
+          "SASKIA AURA RAHMADHANIA",
+          "TASYA CITRA NUR NOVIONA",
+          "ANNISA DWI APRILLIA",
+          "ERLYN ADYA FATMA",
+          "WIDAD NADIAR ROSA",
+          "BAGAS TRISNA",
+        ],
       },
     ],
   },
