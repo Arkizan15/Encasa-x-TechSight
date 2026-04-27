@@ -110,6 +110,26 @@ const managementData = {
       { id: "tr2", name: "AKHISYA ELMA ZAKIYA", role: "Treasurer 2", parentId: "leader2" },
       { id: "sec2", name: "CIKA ZAHRATUS SYITA", role: "Secretary 2", parentId: "leader2" },
     ],
+    "Gen 2": [
+      // ===== LEVEL 1: PEMBINA/ROOT =====
+      // Hanya 1 root yang parentId-nya null
+      { id: "pembina", name: "PUTRI NUGRAHA", role: "Facilitator", parentId: null },
+      
+      // ===== LEVEL 2: LEADERS (anak dari pembina) =====
+      // parentId harus mengacu ke "pembina"
+      { id: "leader1", name: "WIDAD NADIA ROSA", role: "Leader 1", parentId: "pembina" },
+      { id: "leader2", name: "ARCHIEKA ADYA LATHIEFA", role: "Leader 2", parentId: "pembina" },
+      
+      // ===== LEVEL 3: CHILDREN DARI LEADER 1 =====
+      // parentId harus mengacu ke "leader1"
+      { id: "tr1", name: "ERLYN ADYA FATMA", role: "Treasurer 1", parentId: "leader1" },
+      { id: "sec1", name: "NINA AMARA PRADISTA", role: "Secretary 1", parentId: "leader1" },
+      
+      // ===== LEVEL 3: CHILDREN DARI LEADER 2 =====
+      // parentId harus mengacu ke "leader2"
+      { id: "tr2", name: "SASKIA AURA RAMADHANIA", role: "Treasurer 2", parentId: "leader2" },
+      { id: "sec2", name: "MAHARANI VALENSYA", role: "Secretary 2", parentId: "leader2" },
+    ],
     "Gen 1": [
       // ===== LEVEL 1: PEMBINA/ROOT =====
       // Hanya 1 root yang parentId-nya null
@@ -213,6 +233,64 @@ const managementData = {
           "FILBERT LIEM",
           "CHAESAR RAKHA",
           "DANNY FACHROSSI"
+        ],
+      },
+    ],
+    "Gen 2": [
+      // ===== DIVISI 1: PUBLIC RELATION =====
+      {
+        id: "sie-public-relation",
+        name: "SIE PUBLIC RELATION",
+        members: [
+          "AISHAA FADHIYA LUNA",
+          "CHELSEA FRANSISCA LAURENT",
+          "BINTANG ANANDITA PUTRI",
+          "EKA PUTRI FEBRIYANTI",
+        ],
+      },
+      // ===== DIVISI 2: CREATIVE =====
+      {
+        id: "sie-creative",
+        name: "SIE CREATIVE",
+        members: [
+          "ALIQA QIANITA AILINSYAHBANI",
+          "TYAS ALVITA MULYANI",
+          "NAHSWA ARINDYA SEKAR AYU JASMINE KINANTHI",
+          "ARADNA ILLA AIYASYA NIZAM",
+          "ZAHWA SALSABILLA PUTRI SUJANA",
+          "ELLENA TERISON PURNOMO",
+        ],
+      },
+      // ===== DIVISI 3: WORK PROGRAM =====
+      {
+        id: "sie-work-program",
+        name: "SIE WORK PROGRAM",
+        members: [
+          "BERLIANA SASCA SYAHIRA",
+          "DAVINA MAIZA WILLY PUTRI",
+          "DINDA YUSRIAH AMBAR WATI",
+          "ARVATIA PUTRI RAMADHANI",
+        ],
+      },
+      // ===== DIVISI 4: CONTENT =====
+      {
+        id: "sie-content",
+        name: 'SIE CONTENT',
+        members : [
+          "HAWASIVA DEWI SANJAYA",
+          "LOANDA AJENG",
+          "FIRDA NADIFA",
+          "ANI MELYNDA AMALIA KARTI",
+          "ARKAN RIFQY FAUZAN",
+        ]
+      },
+      // ===== DIVISI 5: COMPETITION =====
+      {
+        id: "sie-competition",
+        name: "SIE COMPETITION",
+        members: [
+          "FARRAZ HARUN",
+          "M. GERRY SYAHREZA",
         ],
       },
     ],
