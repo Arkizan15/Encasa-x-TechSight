@@ -157,6 +157,9 @@ const managementData = {
         members: [
           "AISHAA FADHIYA LUNA (Coordinator)",
           "MUHAMMAD IRSYAD ERMAN",
+          "MICHAEL LINTANG ARSY",
+          "SYAHRIL INDERA",
+          "NAI'LA ZAHIRA lUBNA",
         ],
       },
       // ===== DIVISI 2: CREATIVE =====
@@ -167,6 +170,10 @@ const managementData = {
           "NASHWA ARINDYA SEKAR AYU JASMINE KINANTHI (Coordinator)",
           "TYAS ALVITA MULYANI",
           "DWI DELI NOVITASARI",
+          "MUTIA JELITA OKTAVIA",
+          "BAYU LAKSANA",
+          "DENIS MUHAMMAD",
+          "REVANO MITSAL SAPUTRA",
         ],
       },
       // ===== DIVISI 3: WORK PROGRAM =====
@@ -176,6 +183,11 @@ const managementData = {
         members: [
           "BERLIANA SASCA SYAHIRA (Coordinator)",
           "DAVINA MAIZA WILLY PUTRI",
+          "AQILA ZAFIRAINY WIBOWO",
+          "RAHMA PUTRI",
+          "REGINA DELUI",
+          "GRACESITA YUECHA",
+          "SABILA QUROTUL",
         ],
       },
       // ===== DIVISI 4: CONTENT =====
@@ -184,7 +196,12 @@ const managementData = {
         name: 'SIE CONTENT',
         members : [
           "NADIA FAUSTINA WIDYADHANA (Coordinator)",
-          "HAWASIVA DEWI SANJAYA"
+          "HAWASIVA DEWI SANJAYA",
+          "GOLDYA MECCA",
+          "SHINTA MONICA",
+          "ASYIFA DIAN KIRANI",
+          "SULTAN AL FACHRY",
+          "ACHMAD F. ROSI",
         ]
       },
       // ===== DIVISI 5: COMPETITION =====
@@ -194,6 +211,8 @@ const managementData = {
         members: [
           "KENZIE DZAKY WAHYUDI (Coordinator)",
           "FILBERT LIEM",
+          "CHAESAR RAKHA",
+          "DANNY FACHROSSI"
         ],
       },
     ],
