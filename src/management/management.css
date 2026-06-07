@@ -10,6 +10,11 @@
   --font-family: 'Poppins', -apple-system, sans-serif;
 }
 
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -21,13 +26,18 @@ body {
   background-color: var(--blue-primary);
   color: var(--text-dark);
   overflow-x: hidden;
+  
 }
 
 /* ── HERO SECTION ────────────────────────────────────────── */
 #management-hero {
-  padding: 5rem 1rem 1rem;
+  padding: 3.7rem 0rem 0rem;
   text-align: center;
-  background-color: #4a6691;
+  background-color: #3f577b;
+}
+
+.hero-text {
+  padding: 11rem;
 }
 
 .hero-title {
@@ -201,6 +211,7 @@ body {
 
 /* ── RESPONSIVE MOBILE (SMALL SIZE FIX) ─────────────────── */
 @media (max-width: 600px) {
+
   .org-tree-wrapper {
     background-size: 20px 20px;
     padding: 30px 5px;
@@ -255,6 +266,9 @@ body {
 
 
 /* ── DIVISIONS ACCORDION ────────────────────────────────── */
+
+
+
 .divisions-section {
   padding: 2rem 1rem;
   max-width: 1200px;

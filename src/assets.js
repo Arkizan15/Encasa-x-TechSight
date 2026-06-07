@@ -4,7 +4,8 @@ const ASSETS = {
   logoEncasa:   '/Logo/Logo-Encasa.png',
   logoEncasaSquare: 'Logo/Logo-Encasa-Square.png',
   collabLogo:   '/Logo/Logo-Techsight.png',
-  activityImg:  '/Image/Home.webp'
+  activityImg:  '/Image/Home.webp',
+  heroManagement: '/Image/Management.webp'
 };
 
 export default ASSETS;

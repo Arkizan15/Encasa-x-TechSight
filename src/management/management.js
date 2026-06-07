@@ -75,7 +75,7 @@ document.querySelector('#app').innerHTML = renderNavbar();
 // ===========================
 const managementData = {
   hero: {
-    title: "Management Encasa",
+    title: "Encasa Management",
     subtitle: "A team that keep encasa running well",
   },
 
@@ -348,15 +348,14 @@ let currentGen = "Gen 3";
 // ── FEATURE: HERO ─────────────────────────────────────────────
 function renderHero(containerId, data) {
   const el = document.getElementById(containerId);
-  if (!el) return;``
+  if (!el) return;
 
   el.innerHTML = `
-    <div class="management-hero">
+    <div class="management-hero" style="background: linear-gradient(rgba(46, 57, 73, 0.5), rgba(63, 103, 152, 0.5)), url('${ASSETS.heroManagement}') center/cover no-repeat;">
       <div class="hero-text">
         <h1 class="hero-title">${data.title}</h1>
         <p class="hero-subtitle">${data.subtitle}</p>
       </div>
-      <img src="${ASSETS.mascotHead}" alt="Mascot" class="hero-mascot" />
     </div>
   `;
 }
