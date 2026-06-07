@@ -89,7 +89,26 @@ const managementData = {
     //
     // PENTING: Pastikan parentId mengacu ke id yang sudah ada di array!
     // Jika salah referensi, node tidak akan muncul di tree.
-    
+    "Gen 4": [
+      // ===== LEVEL 1: PEMBINA/ROOT =====
+      // Hanya 1 root yang parentId-nya null
+      { id: "pembina", name: "SITI HALUMA SADA", role: "Facilitator", parentId: null },
+      
+      // ===== LEVEL 2: LEADERS (anak dari pembina) =====
+      // parentId harus mengacu ke "pembina"
+      { id: "leader1", name: "MICHAEL LINTANG ARSY", role: "Leader 1", parentId: "pembina" },
+      { id: "leader2", name: "AQILA ZAFIRAINY WIBOWO", role: "Leader 2", parentId: "pembina" },
+      
+      // ===== LEVEL 3: CHILDREN DARI LEADER 1 =====
+      // parentId harus mengacu ke "leader1"
+      { id: "tr1", name: "GOLDYA MECCA SAFITRI", role: "Treasurer 1", parentId: "leader1" },
+      { id: "sec1", name: "RAHMA PUTRI AYU ANDIRA", role: "Secretary 1", parentId: "leader1" },
+      
+      // ===== LEVEL 3: CHILDREN DARI LEADER 2 =====
+      // parentId harus mengacu ke "leader2"
+      { id: "tr2", name: "NA'ILA ZAHIRA LUBNA", role: "Treasurer 2", parentId: "leader2" },
+      { id: "sec2", name: "GRACESITA YUECHA PUTRI JAMEELA", role: "Secretary 2", parentId: "leader2" },
+    ],
     "Gen 3": [
       // ===== LEVEL 1: PEMBINA/ROOT =====
       // Hanya 1 root yang parentId-nya null
@@ -168,7 +187,56 @@ const managementData = {
     //    Contoh: "NAMA LENGKAP (Coordinator)" atau "NAMA LENGKAP (Vice Lead)"
     // 2. Jika tidak ada role khusus, tulis nama saja
     // 3. Urutan members tidak ada pengaruh ke tampilan
-    
+    "Gen 4": [
+      // ===== DIVISI 1: PUBLIC RELATION =====
+      {
+        id: "sie-public-relation",
+        name: "SIE PUBLIC RELATION",
+        members: [
+          "SYAHRIL INDERA",
+        ],
+      },
+      // ===== DIVISI 2: CREATIVE =====
+      {
+        id: "sie-creative",
+        name: "SIE CREATIVE",
+        members: [
+          "MUTIA JELITA OKTAVIA",
+          "BAYU LAKSANA",
+          "DENIS MUHAMMAD",
+          "REVANO MITSAL SAPUTRA",
+        ],
+      },
+      // ===== DIVISI 3: WORK PROGRAM =====
+      {
+        id: "sie-work-program",
+        name: "SIE WORK PROGRAM",
+        members: [
+          "REGINA DELUI",
+          "SABILA QUROTUL",
+        ],
+      },
+      // ===== DIVISI 4: CONTENT =====
+      {
+        id: "sie-content",
+        name: 'SIE CONTENT',
+        members : [
+          "SHINTA MONICA",
+          "ASYIFA DIAN KIRANI",
+          "SULTAN AL FACHRY",
+          "ACHMAD F. ROSI",
+        ]
+      },
+      // ===== DIVISI 5: COMPETITION =====
+      {
+        id: "sie-competition",
+        name: "SIE COMPETITION",
+        members: [
+          "CHAESAR RAKHA",
+          "DANNY FACHROSSI"
+        ],
+      },
+    ],
     "Gen 3": [
       // ===== DIVISI 1: PUBLIC RELATION =====
       {
