@@ -1,0 +1,328 @@
+/* ── VARIABLE & RESET ────────────────────────────────────── */
+:root {
+  --blue-primary: #587bb4;
+  --blue-bg: #648bc7;
+  --text-white: #eeeeee;
+  --card-bg: #ffffff;
+  --text-dark: #333333;
+  --connector-color: #ffffff;
+  --shadow-bottom: #4a6691;
+  --font-family: 'Poppins', -apple-system, sans-serif;
+}
+
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--blue-primary);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  
+}
+
+/* ── HERO SECTION ────────────────────────────────────────── */
+#management-hero {
+  padding: 3.7rem 0rem 0rem;
+  text-align: center;
+  background-color: #3f577b;
+}
+
+.hero-text {
+  padding: 11rem;
+}
+
+.hero-title {
+  font-size: clamp(28px, 6vw, 40px);
+  color: var(--text-white);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.hero-subtitle {
+  font-size: clamp(16px, 4vw, 22px);
+  color: var(--text-white);
+  opacity: 0.9;
+}
+
+/* ── ORGANIZATIONAL CHART ────────────────────────────────── */
+.org-section {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tombol Select Gen (Paling Kiri) */
+.org-header {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.gen-select {
+  padding: 8px 35px 8px 15px;
+  border-radius: 20px;
+  background: var(--card-bg);
+  color: var(--blue-primary);
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23587bb4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+/* Tree Wrapper with Grid Background */
+.org-tree-wrapper {
+  background-color: var(--blue-bg);
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+  border-radius: 24px;
+  padding: 40px 10px;
+  overflow-x: auto; /* Fallback jika screen sangat kecil */
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.org-tree {
+  display: flex;
+  justify-content: center;
+  min-width: min-content;
+}
+
+/* ── TREE CONNECTOR LOGIC ───────────────────────────────── */
+.org-node-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 25px 10px 0 10px;
+}
+
+/* Garis Horizontal */
+.org-node-wrap::before, .org-node-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 2px solid var(--connector-color);
+  width: 50%;
+  height: 25px;
+}
+.org-node-wrap::after {
+  right: auto;
+  left: 50%;
+  border-left: 2px solid var(--connector-color);
+}
+
+/* Hapus garis untuk elemen tunggal/root */
+.org-node-wrap:only-child::after, .org-node-wrap:only-child::before { display: none; }
+.org-node-wrap:only-child { padding-top: 0; }
+.org-node-wrap:first-child::before, .org-node-wrap:last-child::after { border: 0 none; }
+.org-node-wrap:last-child::before { border-right: 2px solid var(--connector-color); border-radius: 0 6px 0 0; }
+.org-node-wrap:first-child::after { border-radius: 6px 0 0 0; }
+
+/* Garis Vertikal dari Parent */
+.org-children {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+  position: relative;
+}
+.org-children::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 2px solid var(--connector-color);
+  width: 0;
+  height: 25px;
+  transform: translateX(-50%);
+}
+
+/* Arrowhead (Panah) */
+.arrow {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translate(-50%, -1px);
+  border-width: 6px 5px 0 5px;
+  border-style: solid;
+  border-color: var(--connector-color) transparent transparent transparent;
+}
+
+/* ── ORG CARD DESIGN ───────────────────────────────────── */
+.org-card {
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 40px;
+  padding: 8px 20px 8px 8px;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+  min-width: 200px;
+  /* Shadow: Inset White Highlight (atas) & Solid Dark Shadow (bawah) */
+  box-shadow: 
+    inset 0 3px 6px rgba(255,255,255,1), 
+    0 5px 0px var(--shadow-bottom),
+    0 10px 15px rgba(0,0,0,0.1);
+}
+
+.org-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center; /* Memastikan teks inline di tengah */
+  justify-content: center;
+  align-items: center; /* Memastikan flex item berada di tengah */
+  width: 100%; /* Tambahkan ini agar mengambil ruang penuh kartu */
+}
+
+.org-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  display: block; /* Memastikan elemen mengambil baris penuh */
+  width: 100%;
+}
+
+.org-role {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+/* ── RESPONSIVE MOBILE (SMALL SIZE FIX) ─────────────────── */
+@media (max-width: 600px) {
+
+  .org-tree-wrapper {
+    background-size: 20px 20px;
+    padding: 30px 5px;
+  }
+
+  .org-node-wrap {
+    padding: 15px 3px 0 3px; /* Rapatkan jarak antar kolom */
+  }
+
+  /* Perkecil Card agar 4 kolom muat (Leader 1 & 2 side-by-side) */
+  .org-card {
+    min-width: 85px; 
+    padding: 4px 6px 4px 4px;
+    gap: 4px;
+    border-radius: 12px;
+    box-shadow: 
+      inset 0 2px 4px rgba(255,255,255,1), 
+      0 3px 0px var(--shadow-bottom);
+  }
+
+  .org-avatar {
+    width: 22px;
+    height: 22px;
+  }
+
+  .org-name {
+    font-size: 8px;
+    line-height: 1.2; /* Beri sedikit ruang agar tidak terlalu rapat */
+    max-width: 100%; /* Ubah dari 55px ke 100% agar centering berfungsi */
+    white-space: normal; /* Biarkan teks membungkus (wrap) jika nama panjang */
+    overflow: visible;
+    text-overflow: clip;
+    text-align: center;
+  }
+  
+  .org-role {
+    font-size: 7px;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+  /* Perkecil Garis & Panah */
+  .org-node-wrap::before, .org-node-wrap::after, .org-children::before {
+    height: 15px;
+  }
+  .org-children { padding-top: 15px; }
+  .arrow { 
+    top: 15px; 
+    border-width: 4px 3px 0 3px; 
+  }
+
+
+/* ── DIVISIONS ACCORDION ────────────────────────────────── */
+
+
+
+.divisions-section {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.divisions-title {
+  color: var(--text-white);
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.divisions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.accordion-item {
+  background: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  background: #fafafa;
+}
+
+.accordion-body-inner {
+  padding: 0 20px;
+}
+
+.accordion-item.is-open .accordion-body {
+  max-height: 500px;
+}
+
+.accordion-item.is-open .accordion-body-inner {
+  padding: 20px 20px;
+}

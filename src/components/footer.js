@@ -1,4 +1,5 @@
 import ASSETS from '../assets.js';
+import '../home.css';
 
 function renderFooter() {
   return `
