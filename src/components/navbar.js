@@ -9,7 +9,7 @@ function renderNavbar() {
       </button>
       <ul class="navbar__links" id="nav-links">
         <li><a href="#hero" class="active">Home</a></li>
-        <li><a href="#gallery">Galery</a></li>
+        <li><a href="../gallery.html">Galery</a></li>
         <li><a href="#management">Management</a></li>
         <li><a href="#join">Join us</a></li>
       </ul>
