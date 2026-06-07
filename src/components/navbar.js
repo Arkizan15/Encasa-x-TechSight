@@ -36,7 +36,7 @@ function renderNavbar() {
       </button>
       <ul class="navbar__links" id="nav-links">
         <li><a href="index.html" class="${isActiveLink('index.html') ? 'active' : ''}">Home</a></li>
-        <li><a href="#gallery">Galery</a></li>
+        <li><a href="gallery.html">Galery</a></li>
         <li><a href="management.html" class="${isActiveLink('management.html') ? 'active' : ''}">Management</a></li>
         <li><a href="join.html" >Join us</a></li>
       </ul>
