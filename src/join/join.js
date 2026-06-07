@@ -27,10 +27,9 @@ function renderJoinSection() {
         <h1>Join ENCASA</h1>
 
         <p>
-          Bergabunglah bersama ENCASA dan jadilah bagian dari
-          komunitas yang aktif, kreatif, dan penuh semangat.
-          Kembangkan kemampuanmu, bangun relasi baru, dan
-          berkontribusi dalam berbagai kegiatan organisasi.
+         Join ENCASA and become part of an active, creative, and passionate community.
+         Develop your skills, build new relationships, and
+         contribute to various organizational activities.
         </p>
 
         <div class="join-section__buttons">
