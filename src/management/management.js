@@ -411,7 +411,7 @@ const managementData = {
 };
 
 // State
-let currentGen = "Gen 3";
+let currentGen = "Gen 4";
 
 // ── FEATURE: HERO ─────────────────────────────────────────────
 function renderHero(containerId, data) {
