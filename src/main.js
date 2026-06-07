@@ -31,7 +31,7 @@ function renderHero() {
           Encasa, or English Club Esemkasa, is one of the extracurricular activities at 
           SMKN 1 Banyuwangi that serves as a platform to develop English language skills.
         </p>
-        <a href="#join" class="hero__btn">Join us</a>
+        <a href="join.html" class="hero__btn">Join us</a>
       </div>
       <div class="hero__mascot-wrap">
         <div class="hero__circle"></div>
@@ -73,7 +73,7 @@ function renderActivities() {
             community, ENCASA is the perfect place to grow, connect, and discover the joy of 
             learning English together.
           </p>
-          <button class="activities_button">
+          <button onclick="window.location.href='gallery.html'" class="activities_button">
             Take a Look
           </button>
           <img src="${ASSETS.mascotHead}" alt="Mascot" class="activities__mascot-small" />

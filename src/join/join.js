@@ -1,10 +1,11 @@
 import './join.css';
+import ASSETS  from '../assets.js';
 import renderNavbar from '../components/navbar.js';
 import renderFooter from '../components/footer.js';
 
 const JOIN_LINKS = {
-  whatsapp: 'https://wa.me/yourNumber',
-  gform: 'https://forms.google.com/yourForm',
+  whatsapp: 'https://wa.me/6287857911279',
+  gform: 'https://forms.gle/KFHr2Nu58FSo83Vb7',
 };
 
 document.querySelector('#app').innerHTML = `
@@ -17,7 +18,7 @@ document.querySelector('#app').innerHTML = `
 
 function renderJoinSection() {
   return `
-    <section class="join-section">
+    <section class="join-section style="background: linear-gradient(rgba(46, 57, 73, 0.5), rgba(63, 103, 152, 0.5)), url('${ASSETS.heroJoin}') center/cover no-repeat;"">
       <div class="join-section__content">
         <h1>Join us in Encasa</h1>
 

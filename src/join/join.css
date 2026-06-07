@@ -26,7 +26,7 @@ body {
   justify-content: center;
   gap: 60px;
   padding: 100px 40px;
-  background: linear-gradient(rgba(46, 57, 73, 0.5), rgba(63, 103, 152, 0.5)), url("/Image/Galery/WhatsApp Image 2025-11-28 at 19.00.27 (1).jpeg") center/cover no-repeat;
+  background: linear-gradient(rgba(46, 57, 73, 0.5), rgba(63, 103, 152, 0.5)), url("Image/Galery/foto5.jpg") center/cover no-repeat;
 }
 
 

@@ -12,6 +12,7 @@
 /* ── Hero Banner ────────────────────────────────────────────────── */
 .gallery-hero {
   position: relative;
+  padding: 3.8rem 0rem 0rem;
   width: 100%;
   height: 240px; /* Tinggi default mobile */
   background: url('/Image/Home.webp') center/cover no-repeat; 
@@ -20,7 +21,7 @@
 .gallery-hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(35, 75, 130, 0.55); /* Efek filter biru gelap transparan */
+  background: linear-gradient(rgba(46, 57, 73, 0.5), rgba(63, 103, 152, 0.5)); /* Efek filter biru gelap transparan */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,6 +32,7 @@
   font-size: clamp(2.4rem, 6vw, 4rem);
   font-weight: 700;
   margin: 0;
+  padding: 11rem;
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
