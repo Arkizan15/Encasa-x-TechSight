@@ -13,15 +13,15 @@
   --color-footer-bg: #4f6b98;
   --color-white: #ffffff;
   --color-black: #000000;
-  --font-inter: 'Inter', sans-serif;
-  --font-roboto: 'Roboto', sans-serif;
+  --font-family: 'Poppins', sans-serif;
+  
   --letter-spacing: 1.2px;
 }
 
 html { height: 100%; }
 
 body {
-  font-family: var(--font-inter);
+  font-family: var(--font-family);
   background: #fff;
   color: var(--color-black);
   overflow-x: hidden;
@@ -64,7 +64,7 @@ body {
 }
 
 .navbar__links a {
-  font-family: var(--font-inter);
+  font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
   color: var(--color-black);
@@ -111,7 +111,7 @@ body {
 }
 
 .hero__tagline {
-  font-family: var(--font-inter);
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 24px;
   color: var(--color-white);
@@ -132,7 +132,7 @@ body {
 }
 
 .hero__description {
-  font-family: var(--font-inter);
+  font-family: var(--font-family);
   font-weight: 500;
   font-size: 18px;
   color: var(--color-white);
@@ -148,7 +148,7 @@ body {
   display: inline-block;
   background: var(--color-primary-btn);
   color: var(--color-white);
-  font-family: var(--font-inter);
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 20px;
   letter-spacing: var(--letter-spacing);
@@ -284,7 +284,7 @@ body {
 }
 
 .activities__card-title {
-  font-family: var(--font-inter);
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 24px;
   color: var(--color-black);
@@ -301,7 +301,7 @@ body {
 }
 
 .activities__card-text {
-  font-family: var(--font-inter);
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 17px;
   color: var(--color-black);
@@ -315,7 +315,7 @@ body {
   display: inline-block;
   background: var(--color-primary-btn);
   color: var(--color-white);
-  font-family: var(--font-inter);
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 16px;
   letter-spacing: var(--letter-spacing);
@@ -360,7 +360,7 @@ body {
 }
 
 .records__title {
-  font-family: var(--font-roboto);
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 36px;
   color: var(--color-white);
@@ -391,7 +391,7 @@ body {
 }
 
 .stat__number {
-  font-family: var(--font-roboto);
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 96px;
   line-height: 1;
@@ -408,7 +408,7 @@ body {
 }
 
 .stat__label {
-  font-family: var(--font-roboto);
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 22px;
   letter-spacing: 1.2px;
@@ -446,7 +446,7 @@ body {
 }
 
 .footer__collab-label {
-  font-family: var(--font-inter);
+  font-family: var(--font-family);
   font-weight: 500;
   font-size: 20px;
   color: var(--color-white);
@@ -480,7 +480,7 @@ body {
 }
 
 .footer__nav-col h4 {
-  font-family: var(--font-inter);
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 17px;
   color: var(--color-white);
@@ -491,7 +491,7 @@ body {
 }
 
 .footer__nav-col a {
-  font-family: var(--font-inter);
+  font-family: var(--font-family);
   font-weight: 600;
   font-size: 15px;
   color: var(--color-white);
