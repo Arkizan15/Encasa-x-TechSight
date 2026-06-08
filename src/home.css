@@ -63,14 +63,14 @@ body {
 
 .navbar__links {
   display: flex;
-  gap: 48px;
+  gap: 24px;
   list-style: none;
 }
 
 .navbar__links a {
   font-family: var(--font-family);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 0.9rem;
   color: var(--color-black);
   text-decoration: none;
   letter-spacing: var(--letter-spacing);
@@ -136,6 +136,7 @@ body {
 }
 
 .hero__description {
+  width: 25rem;
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 18px;
@@ -238,18 +239,18 @@ body {
    ============================ */
 .activities {
   width: 100%;
-  min-height: 777px;
+  min-height: calc(100vh - 60px); /* Menyesuaikan tinggi layar dikurangi tinggi navbar */
   background: linear-gradient(241.6deg, #7fadf6 45.2%, #4a6590 96.6%);
   display: flex;
   align-items: center;
-  padding: 60px 0;
+  padding: 40px 0;
   position: relative;
 }
 
 .activities__inner {
   display: flex;
-  align-items: stretch;
-  max-width: 1280px;
+  align-items: center; /* Mengubah stretch menjadi center agar card dan gambar seimbang */
+  max-width: 1200px;  /* Sedikit diperkecil agar lebih compact */
   margin: 0 auto;
   padding: 0 103px;
   gap: 0;
@@ -258,10 +259,10 @@ body {
 
 .activities__img-wrap {
   flex-shrink: 0;
-  width: 358px;
-  height: 544px;
+  width: 320px;       /* Diperkecil dari 358px */
+  height: 460px;      /* Diperkecil dari 544px agar pas satu layar desktop */
   border-radius: 20px;
-  border: 2px solid var(--color-white);
+  /* border: 2px solid var(--color-white); */
   overflow: hidden;
   position: relative;
   z-index: 2;
@@ -275,9 +276,10 @@ body {
 }
 
 .activities__card {
+  width: 50%;         /* MEMPERBAIKI 'size: 50%' yang salah pada kode asli */
   background: var(--color-white);
-  border-radius: 50px;
-  padding: 48px 60px 48px 80px;
+  border-radius: 40px; /* Sedikit diperkecil dari 50px */
+  padding: 36px 48px 36px 64px; /* Mengurangi padding agar konten lebih padat */
   margin-left: -40px;
   flex: 1;
   display: flex;
@@ -293,38 +295,39 @@ body {
   font-size: 24px;
   color: var(--color-black);
   letter-spacing: var(--letter-spacing);
-  margin-bottom: 12px;
+  margin-bottom: 8px; /* Dikurangi dari 12px */
 }
 
 .activities__card-divider {
-  width: 173px;
+  width: 140px;       /* Diperkecil dari 173px */
   height: 3px;
   background: var(--color-primary);
   border-radius: 2px;
-  margin-bottom: 32px;
+  margin-bottom: 20px; /* Dikurangi dari 32px */
 }
 
 .activities__card-text {
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 17px;
+  font-size: 14.5px;   /* Diperkecil sedikit dari 17px agar teks pas */
   color: var(--color-black);
-  letter-spacing: 1px;
-  line-height: 1.75;
+  letter-spacing: 0.5px;
+  line-height: 1.6;   /* Sedikit dirapatkan dari 1.75 */
 }
 
 .activities_button {
-  width: 30%;
-  margin-top: 32px;
+  width: auto;        /* Mengubah 33% menjadi auto dengan padding agar fleksibel */
+  align-self: flex-start; 
+  margin-top: 20px;   /* Dikurangi dari 32px */
   display: inline-block;
   background: var(--color-primary-btn);
   color: var(--color-white);
   font-family: var(--font-family);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   letter-spacing: var(--letter-spacing);
-  border-radius: 15px;
-  padding: 12px 22px;
+  border-radius: 12px;
+  padding: 10px 24px;
   border: none;
   cursor: pointer;
   text-decoration: none;
@@ -336,15 +339,15 @@ body {
 .activities_button:hover {
   background: var(--color-primary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(80, 132, 195, 0.35);
+  box-shadow: 0 6px 20px rgba(80, 132, 195, 0.35);
 }
 
 .activities__mascot-small {
   position: absolute;
-  right: -20px;
-  bottom: -102px;
-  width: 220px;
-  height: 220px;
+  right: -15px;
+  bottom: -60px;     /* Disesuaikan ukurannya agar tidak terlalu keluar */
+  width: 160px;      /* Diperkecil dari 220px */
+  height: 160px;
   object-fit: contain;
   z-index: 3;
 }
@@ -632,28 +635,50 @@ body {
   .square-divider__item--accent { width: 12px; height: 12px; }
 
   /* Activities */
-  .activities { padding: 40px 20px; min-height: unset; }
-  .activities__inner { flex-direction: column; padding: 0; }
+  .activities { 
+    padding: 24px 0;       /* Dikurangi dari 40px 20px agar hemat ruang vertikal */
+    min-height: unset; 
+  }
+  .activities__inner { 
+    flex-direction: column; 
+    padding: 0 16px;       /* Memberikan jarak tipis 16px di kanan-kiri seluruh container */
+  }
   .activities__img-wrap {
     width: 100%;
-    height: 260px;
-    border-radius: 16px;
+    height: 200px;         /* Dikurangi dari 260px supaya tidak terlalu memakan tinggi layar */
+    border-radius: 12px;   /* Sedikit lebih proporsional untuk mobile */
   }
   .activities__card {
+    width: 100%;           /* Memastikan card mengambil 100% lebar container */
     margin-left: 0;
-    margin-top: -20px;
-    border-radius: 20px;
-    padding: 32px 24px 40px;
+    margin-top: -16px;     /* Menempel pas ke bagian bawah gambar */
+    border-radius: 16px;
+    padding: 24px 20px;    /* Mengurangi padding dalam card agar teks tidak terlalu memanjang ke bawah */
   }
-  .activities__card-title { font-size: 20px; }
-  .activities__card-divider { width: 80px; margin-bottom: 20px; }
-  .activities__card-text { font-size: 15px; }
-  .activities_button { width: 100%; text-align: center; font-size: 15px; }
+  .activities__card-title { 
+    font-size: 18px;       /* Diperkecil dari 20px */
+    margin-bottom: 6px;
+  }
+  .activities__card-divider { 
+    width: 60px; 
+    margin-bottom: 16px;   /* Mengurangi jarak vertikal */
+  }
+  .activities__card-text { 
+    font-size: 13.5px;     /* Diperkecil dari 15px agar teks padat dan hemat tinggi */
+    line-height: 1.5;      /* Merapatkan baris teks */
+  }
+  .activities_button { 
+    width: 100%; 
+    text-align: center; 
+    font-size: 14px; 
+    margin-top: 20px;      /* Jarak tombol yang lebih pas */
+    padding: 10px 16px;
+  }
   .activities__mascot-small {
-    right: -8px;
-    bottom: -50px;
-    width: 130px;
-    height: 130px;
+    right: -4px;
+    bottom: -40px;
+    width: 100px;          /* Diperkecil dari 130px agar tidak menutupi tombol atau teks */
+    height: 100px;
   }
 
   /* Records — horizontal on mobile */

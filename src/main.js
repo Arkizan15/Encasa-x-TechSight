@@ -66,8 +66,7 @@ function renderActivities() {
             practice to English games and storytelling, every activity is crafted to make learning 
             an enjoyable experience for everyone.
           </p>
-          <br />
-          <p class="activities__card-text">
+          <p class="activities__card-text" style="margin-top: 12px;">
             We also provide opportunities for members to showcase their skills through English 
             competitions, speech contests, and creative performances. With a warm and supportive 
             community, ENCASA is the perfect place to grow, connect, and discover the joy of 
@@ -82,7 +81,6 @@ function renderActivities() {
     </section>
   `;
 }
-
 function renderRecords() {
   const stats = [
     { number: '3',    label: 'Years Growing Together' },

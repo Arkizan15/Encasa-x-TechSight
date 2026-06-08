@@ -1,8 +1,11 @@
 /* ================================================================
    Gallery.css  –  Encasa Gallery Page (Flexbox Remake)
    ================================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-:root {
+   :root {
   --gallery-bg-color: #5a8fd4; /* Latar belakang biru cerah sesuai foto referensi */
   --gallery-card-radius: 16px;
   --gallery-border-width: 6px; /* Ketebalan border putih */

@@ -1,6 +1,6 @@
-import './gallery.css';
 import renderNavbar from '../components/navbar.js';
 import renderFooter from '../components/footer.js';
+import './gallery.css';
 
 // ── KONFIGURASI ITERASI GAMBAR ──────────────────────────────────────
 // Tentukan jumlah total foto yang tersimpan di dalam folder public/Image/Galery Anda
@@ -11,7 +11,7 @@ let currentVisibleItems = parseInt(sessionStorage.getItem('gallery_visible_count
 
 const galleryItems = Array.from({ length: TOTAL_FOTO }, (_, i) => ({
   id: i + 1,
-  src: `/Image/Galery/foto${i + 1}.jpg`, 
+  src: `/Image/Galery/foto${i + 1}.webp`, 
   alt: `Encasa Documentation Momen ${i + 1}`
 }));
 
